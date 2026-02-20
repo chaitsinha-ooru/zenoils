@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rose Radiance Serum — Zen Oils</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="product.css">
+</head>
+
+<body>
+
+  <!-- NAV (identical to homepage) -->
+  <nav>
+    <div class="nav-logo">ZEN<br>OILS</div>
+    <ul class="nav-links">
+      <li><a href="skincare.html">Skin Care</a></li>
+      <li><a href="haircare.html">Hair Care</a></li>
+      <li><a href="index.html#products">Bundles</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
+    <button class="nav-cta">Shop Now</button>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>→</span>
+    <a href="index.html#products">Skin Care</a>
+    <span>→</span>
+    <span class="breadcrumb-current">Rose Radiance Serum</span>
+  </div>
+
+  <!-- PRODUCT HERO -->
+  <section class="product-hero">
+    <div class="product-gallery">
+      <div class="product-main-img">
+        <div class="product-main-visual">
+          <div class="product-visual-inner">🫙</div>
+          <div class="product-glow"></div>
+        </div>
+        <span class="product-hero-badge">Bestseller</span>
+      </div>
+      <div class="product-thumbs">
+        <div class="thumb thumb-active"><span>🫙</span></div>
+        <div class="thumb"><span>🌹</span></div>
+        <div class="thumb"><span>🌿</span></div>
+        <div class="thumb"><span>✨</span></div>
+      </div>
+    </div>
+
+    <div class="product-info-panel">
+      <p class="product-collection-tag">✦ Skin Care Collection</p>
+      <h1 class="product-title">Rose Radiance<br><em>Serum</em></h1>
+      <p class="product-subtitle">Brightening Facial Serum</p>
+
+      <div class="product-rating">
+        <span class="stars">★★★★★</span>
+        <span class="rating-count">4.9 (128 reviews)</span>
+      </div>
+
+      <div class="product-price-block">
+        <span class="price-main">₹1,200</span>
+        <span class="price-volume">30ml</span>
+      </div>
+
+      <div class="product-divider"></div>
+
+      <p class="product-description">
+        A concentrated brightening serum crafted from cold-pressed rosehip seed oil, rich in naturally occurring vitamin
+        C and essential fatty acids. Formulated to visibly reduce dark spots, even skin tone, and restore your skin's
+        innate radiance — all without a single synthetic ingredient.
+      </p>
+      <p class="product-description" style="margin-top: 14px;">
+        Each batch is handcrafted in small quantities to ensure potency and freshness. Best suited for dull, uneven, or
+        sun-damaged skin.
+      </p>
+
+      <div class="product-divider"></div>
+
+      <!-- SIZE SELECTOR -->
+      <div class="selector-group">
+        <p class="selector-label">Size</p>
+        <div class="size-options">
+          <button class="size-btn size-active">30ml</button>
+          <button class="size-btn">50ml <span class="size-note">Save 10%</span></button>
+        </div>
+      </div>
+
+      <!-- QUANTITY -->
+      <div class="selector-group">
+        <p class="selector-label">Quantity</p>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <span class="qty-value" id="qty">1</span>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+      </div>
+
+      <!-- CTA BUTTONS -->
+      <div class="product-ctas">
+        <button class="btn-primary btn-full">Add to Cart</button>
+        <button class="btn-outline btn-full">Buy Now</button>
+      </div>
+
+      <!-- MINI TRUST -->
+      <div class="mini-trust">
+        <div class="mini-trust-item"><span>🌱</span> 100% Natural</div>
+        <div class="mini-trust-item"><span>✋</span> Handcrafted</div>
+        <div class="mini-trust-item"><span>🚚</span> Free Delivery over ₹999</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT DETAILS TABS -->
+  <section class="product-details-section">
+    <div class="tabs">
+      <button class="tab tab-active" onclick="showTab('ingredients', this)">Ingredients</button>
+      <button class="tab" onclick="showTab('howto', this)">How to Use</button>
+      <button class="tab" onclick="showTab('about', this)">About the Formula</button>
+    </div>
+
+    <div class="tab-content" id="tab-ingredients">
+      <div class="ingredients-layout">
+        <div class="ingredients-hero-text">
+          <span class="section-tag">✦ What's Inside</span>
+          <h2 class="section-title" style="text-align:left;">Pure. <em>Honest.</em><br>Ingredients.</h2>
+          <p class="ingredients-intro">Every ingredient is chosen with purpose. We use only what your skin needs —
+            nothing more.</p>
+        </div>
+        <div class="ingredients-grid">
+          <div class="ingredient-card">
+            <div class="ingredient-icon">🌹</div>
+            <div>
+              <div class="ingredient-name">Rosehip Seed Oil</div>
+              <div class="ingredient-benefit">Rich in natural Vitamin C & Omega-3. Fades dark spots and boosts collagen
+                production.</div>
+            </div>
+          </div>
+          <div class="ingredient-card">
+            <div class="ingredient-icon">🌻</div>
+            <div>
+              <div class="ingredient-name">Sea Buckthorn Oil</div>
+              <div class="ingredient-benefit">Potent antioxidant that brightens skin tone and protects against
+                environmental damage.</div>
+            </div>
+          </div>
+          <div class="ingredient-card">
+            <div class="ingredient-icon">🫒</div>
+            <div>
+              <div class="ingredient-name">Squalane (Olive-derived)</div>
+              <div class="ingredient-benefit">Lightweight moisturiser that mimics skin's natural sebum for deep,
+                non-greasy hydration.</div>
+            </div>
+          </div>
+          <div class="ingredient-card">
+            <div class="ingredient-icon">🌿</div>
+            <div>
+              <div class="ingredient-name">Bakuchiol</div>
+              <div class="ingredient-benefit">Natural retinol alternative from the babchi plant. Firms and smooths with
+                zero irritation.</div>
+            </div>
+          </div>
+          <div class="ingredient-card">
+            <div class="ingredient-icon">🍋</div>
+            <div>
+              <div class="ingredient-name">Vitamin C (L-Ascorbic Acid)</div>
+              <div class="ingredient-benefit">Brightens pigmentation, evens skin tone and shields against UV-induced
+                damage.</div>
+            </div>
+          </div>
+          <div class="ingredient-card">
+            <div class="ingredient-icon">🌸</div>
+            <div>
+              <div class="ingredient-name">Rose Otto Essential Oil</div>
+              <div class="ingredient-benefit">Soothes inflammation, reduces redness and adds a gentle, natural rose
+                fragrance.</div>
+            </div>
+          </div>
+        </div>
+        <div class="full-inci">
+          <p class="inci-label">Full INCI List</p>
+          <p class="inci-text">Rosa Canina Seed Oil, Hippophae Rhamnoides Oil, Squalane, Paeonia Suffruticosa Extract,
+            Ascorbic Acid, Rosa Damascena Flower Oil, Tocopherol (Vitamin E), Helianthus Annuus Seed Oil</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="tab-howto">
+      <div class="howto-layout">
+        <div class="howto-intro">
+          <span class="section-tag">✦ Application</span>
+          <h2 class="section-title" style="text-align:left;">How to <em>Use</em></h2>
+          <p class="ingredients-intro">For best results, use morning and evening as part of your daily routine.</p>
+        </div>
+        <div class="howto-steps">
+          <div class="howto-step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <div class="step-title">Cleanse</div>
+              <div class="step-text">Begin with a clean, damp face. Pat skin dry with a soft towel — leave skin slightly
+                damp for better absorption.</div>
+            </div>
+          </div>
+          <div class="howto-step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <div class="step-title">Apply</div>
+              <div class="step-text">Dispense 3–4 drops onto fingertips. Gently press and pat into skin — do not rub.
+                Focus on areas of concern: cheeks, forehead, jawline.</div>
+            </div>
+          </div>
+          <div class="howto-step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <div class="step-title">Absorb</div>
+              <div class="step-text">Allow 60 seconds for the serum to absorb fully before layering moisturiser or SPF
+                on top.</div>
+            </div>
+          </div>
+          <div class="howto-step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              <div class="step-title">Protect (Morning)</div>
+              <div class="step-text">Always follow with a broad-spectrum SPF 30+ during the day. Vitamin C increases
+                photosensitivity.</div>
+            </div>
+          </div>
+        </div>
+        <div class="howto-tip">
+          <span>💡</span>
+          <p>Visible results typically appear after 4–6 weeks of consistent use. Store in a cool, dark place away from
+            direct sunlight.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="tab-about">
+      <div class="about-layout">
+        <div class="about-text-block">
+          <span class="section-tag">✦ The Formula</span>
+          <h2 class="section-title" style="text-align:left;">Crafted with<br><em>Intention</em></h2>
+          <p class="about-text">The Rose Radiance Serum was born from a simple question: why do brightening serums need
+            synthetic acids, artificial stabilisers, and preservatives that irritate sensitive skin?</p>
+          <p class="about-text">We spent 14 months sourcing and testing cold-pressed rosehip oils from small farms in
+            Chile and South Africa, finally settling on a blend that delivers consistent potency without refinement or
+            dilution.</p>
+          <p class="about-text">Every bottle is filled, sealed, and labelled by hand in our workshop in Delhi. Batch
+            numbers are printed on each bottle — you can trace exactly when and how your serum was made.</p>
+        </div>
+        <div class="about-stats">
+          <div class="about-stat">
+            <div class="stat-number">14</div>
+            <div class="stat-label">Months in<br>Development</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Active<br>Botanicals</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Synthetic<br>Ingredients</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Cold-Pressed<br>Oils</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section" style="background: var(--warm-white);">
+    <div class="section-header">
+      <span class="section-tag">✦ Real Results</span>
+      <h2 class="section-title">What Customers <em>Say</em></h2>
+    </div>
+    <div class="reviews-track">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-date">Verified Purchase — Jan 2024</div>
+        <p class="review-text">"My skin has never felt this soft. After two months of use my dark spots have visibly
+          faded. I recommend this to everyone."</p>
+        <div class="review-author">— Ananya K., Mumbai</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-date">Verified Purchase — Dec 2023</div>
+        <p class="review-text">"I was sceptical about a natural serum working as well as clinical ones — I was
+          completely wrong. My skin is glowing."</p>
+        <div class="review-author">— Meera T., Delhi</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-date">Verified Purchase — Feb 2024</div>
+        <p class="review-text">"Lightweight, absorbs instantly and smells divine. This is the only serum I've used
+          consistently for more than a week."</p>
+        <div class="review-author">— Roshni P., Bangalore</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- YOU MAY ALSO LIKE -->
+  <section class="related-section">
+    <div class="section-header">
+      <span class="section-tag">✦ Complete Your Routine</span>
+      <h2 class="section-title">You May Also <em>Like</em></h2>
+    </div>
+    <div class="related-grid">
+      <a href="product.html" class="related-card">
+        <div class="related-img" style="background: linear-gradient(135deg, #C0CEB8, #A8BCA0);">🌿</div>
+        <div class="related-info">
+          <div class="product-name">Green Tea Cleansing Balm</div>
+          <div class="product-desc">Gentle melt-away cleanser</div>
+          <div class="related-footer">
+            <span class="product-price">₹950</span>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </a>
+      <a href="product.html" class="related-card">
+        <div class="related-img" style="background: linear-gradient(135deg, #C8A898, #B89080);">🌹</div>
+        <div class="related-info">
+          <div class="product-name">Argan Silk Hair Mask</div>
+          <div class="product-desc">Deep repair with argan oil</div>
+          <div class="related-footer">
+            <span class="product-price">₹1,050</span>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </a>
+      <a href="product.html" class="related-card">
+        <div class="related-img" style="background: linear-gradient(135deg, #C8B8A0, #B8A088);">🍯</div>
+        <div class="related-info">
+          <div class="product-name">Honey Glow Moisturiser</div>
+          <div class="product-desc">24hr hydration & nourishment</div>
+          <div class="related-footer">
+            <span class="product-price">₹1,450</span>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <span class="footer-logo">ZEN<br>OILS</span>
+      <p class="footer-tagline">Pure skin and hair care, handcrafted with the finest natural ingredients. Beauty that's
+        honest, inside and out.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Shop</div>
+      <ul class="footer-links">
+        <li><a href="skincare.html">Skin Care</a></li>
+        <li><a href="haircare.html">Hair Care</a></li>
+        <li><a href="index.html#products">Bundles</a></li>
+        <li><a href="#">Gift Sets</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Ingredients</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Support</div>
+      <ul class="footer-links">
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Shipping</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">© 2024 Zen Oils. All rights reserved. Made with 🌿 and love.</div>
+
+  <script>
+    function changeQty(delta) {
+      const el = document.getElementById('qty');
+      let val = parseInt(el.textContent) + delta;
+      if (val < 1) val = 1;
+      if (val > 10) val = 10;
+      el.textContent = val;
+    }
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('tab-active'));
+      document.getElementById('tab-' + id).classList.remove('hidden');
+      btn.classList.add('tab-active');
+    }
+    document.querySelectorAll('.thumb').forEach(t => {
+      t.addEventListener('click', function () {
+        document.querySelectorAll('.thumb').forEach(x => x.classList.remove('thumb-active'));
+        this.classList.add('thumb-active');
+      });
+    });
+    document.querySelectorAll('.size-btn').forEach(b => {
+      b.addEventListener('click', function () {
+        document.querySelectorAll('.size-btn').forEach(x => x.classList.remove('size-active'));
+        this.classList.add('size-active');
+      });
+    });
+  </script>
+</body>
+
+</html>

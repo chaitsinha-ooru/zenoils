@@ -1,0 +1,140 @@
+/* ── CATEGORY GRID STYLES ── */
+
+/* Header Area */
+.category-header {
+    padding: 160px 60px 80px;
+    background: var(--warm-white);
+    text-align: center;
+    border-bottom: 1px solid rgba(74, 55, 40, 0.08);
+}
+
+.category-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--bark);
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.category-title em {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.category-description {
+    font-size: 16px;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* The Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 60px 40px;
+    padding: 80px 60px;
+    background: #fdfaf7;
+    /* Slightly lighter than warm-white for contrast */
+}
+
+/* Individual Card */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Image Container */
+.product-image-wrapper {
+    aspect-ratio: 1 / 1.1;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    /* For the emoji placeholders */
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+/* One-liner and Info */
+.product-info {
+    padding: 0 4px;
+}
+
+.product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--bark);
+    margin-bottom: 8px;
+}
+
+.product-one-liner {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    min-height: 42px;
+    /* Keeps grid rows even */
+}
+
+/* Price and Button Row */
+.product-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(74, 55, 40, 0.1);
+}
+
+.product-price {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--text);
+}
+
+.add-to-cart-btn {
+    background: var(--bark);
+    color: var(--warm-white);
+    border: none;
+    padding: 10px 20px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background: var(--text);
+    letter-spacing: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .category-header {
+        padding: 120px 24px 60px;
+    }
+
+    .category-title {
+        font-size: 42px;
+    }
+
+    .product-grid {
+        padding: 40px 24px;
+        gap: 40px;
+    }
+}
