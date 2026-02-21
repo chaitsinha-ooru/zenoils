@@ -44,9 +44,17 @@
 .product-card {
     display: flex;
     flex-direction: column;
+    transition: transform 0.4s ease;
+}
+
+.product-link {
     text-decoration: none;
     color: inherit;
-    transition: transform 0.4s ease;
+    display: block;
+}
+
+.product-link:visited {
+    color: inherit;
 }
 
 .product-card:hover {

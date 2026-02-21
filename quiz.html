@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Zen — Consultation Quiz</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="quiz.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo" style="text-decoration: none;">ZEN<br>OILS</a>
+        <ul class="nav-links">
+            <li><a href="skincare.html">Skin Care</a></li>
+            <li><a href="haircare.html">Hair & Wellness</a></li>
+            <li><a href="index.html#about">About</a></li>
+        </ul>
+        <div style="display: flex; align-items: center; gap: 24px;">
+            <a href="cart.html" style="position: relative; color: var(--bark); display: flex; align-items: center;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
+                <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
+            </a>
+            <button class="nav-cta" onclick="window.location.href='index.html#products'">Shop Now</button>
+        </div>
+    </nav>
+
+    <div class="quiz-container">
+        <div class="quiz-card">
+            <div class="quiz-progress" id="progress"></div>
+
+            <!-- Step 0: Welcome -->
+            <div class="step active" id="step-0">
+                <span class="step-label">Consultation</span>
+                <h1 class="step-title">Find Your <em>Zen.</em></h1>
+                <p class="step-subtitle">Handcrafting Skin and Body Care. After understanding your needs, our
+                    aromatherapists will recommend the oil meant for you.</p>
+                <button class="btn-next" onclick="nextStep()">Start the Quiz</button>
+            </div>
+
+            <!-- Step 1: Age -->
+            <div class="step" id="step-1">
+                <span class="step-label">Question 1/8</span>
+                <h2 class="step-title">Hi! How old are you?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="selectOption('age', '18 and below', 2)"><span
+                            class="option-key">A</span> 18 and below</button>
+                    <button class="option-btn" onclick="selectOption('age', '20-30 yrs old', 2)"><span
+                            class="option-key">B</span> 20-30 yrs old</button>
+                    <button class="option-btn" onclick="selectOption('age', '31-45 yrs old', 2)"><span
+                            class="option-key">C</span> 31-45 yrs old</button>
+                    <button class="option-btn" onclick="selectOption('age', '46-60 yrs old', 2)"><span
+                            class="option-key">D</span> 46-60 yrs old</button>
+                    <button class="option-btn" onclick="selectOption('age', 'Over 60 yrs', 2)"><span
+                            class="option-key">E</span> Over 60 yrs</button>
+                </div>
+                <div class="nav-btns">
+                    <button class="btn-back" onclick="prevStep()">Back</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Gender -->
+            <div class="step" id="step-2">
+                <span class="step-label">Question 2/8</span>
+                <h2 class="step-title">What gender do you identify with?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="selectOption('gender', 'Male', 3)"><span
+                            class="option-key">A</span> Male</button>
+                    <button class="option-btn" onclick="selectOption('gender', 'Female', 3)"><span
+                            class="option-key">B</span> Female</button>
+                    <button class="option-btn" onclick="selectOption('gender', 'Trans/Non-Binary', 3)"><span
+                            class="option-key">C</span> Trans / Non-Binary</button>
+                </div>
+                <div class="nav-btns">
+                    <button class="btn-back" onclick="prevStep()">Back</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Care Categories (Multi-select) -->
+            <div class="step" id="step-3">
+                <span class="step-label">Question 3/8</span>
+                <h2 class="step-title">What care are you looking for?</h2>
+                <p class="step-subtitle">Choose as many as you like</p>
+                <div class="options-grid">
+                    <button class="option-btn multi" data-val="Skin Care" onclick="toggleMulti(this)"><span
+                            class="option-key">A</span> Skin Care</button>
+                    <button class="option-btn multi" data-val="Body Care" onclick="toggleMulti(this)"><span
+                            class="option-key">B</span> Body Care</button>
+                    <button class="option-btn multi" data-val="Hair & Wellness" onclick="toggleMulti(this)"><span
+                            class="option-key">C</span> Hair & Wellness</button>
+                </div>
+                <div class="nav-btns">
+                    <button class="btn-back" onclick="prevStep()">Back</button>
+                    <button class="btn-next" onclick="handleCareSelection()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Skin Description (Branch) -->
+            <div class="step" id="step-4">
+                <span class="step-label">Skin Consultation</span>
+                <h2 class="step-title">How would you describe your skin?</h2>
+                <p class="step-subtitle">Words like dry / oily / combination will help us understand further.</p>
+                <input type="text" id="skin-desc" placeholder="Type your answer here..." required>
+                <div class="nav-btns">
+                    <button class="btn-back" onclick="prevStep()">Back</button>
+                    <button class="btn-next" onclick="submitText('skinDescription', 'skin-desc')">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Hair Description (Branch) -->
+            <div class="step" id="step-5">
+                <span class="step-label">Hair Consultation</span>
+                <h2 class="step-title">How would you describe your hair?</h2>
+                <p class="step-subtitle">Anything specific you're hoping to solve?</p>
+                <input type="text" id="hair-desc" placeholder="Type your answer here..." required>
+                <div class="nav-btns">
+                    <button class="btn-back" onclick="prevStep()">Back</button>
+                    <button class="btn-next" onclick="submitText('hairDescription', 'hair-desc')">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 6: Aroma -->
+            <div class="step" id="step-6">
+                <span class="step-label">Preferences</span>
+                <h2 class="step-title">What kind of aromas do you like?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="selectOption('aroma', 'Woody', 7)"><span
+                            class="option-key">A</span> Woody</button>
+                    <button class="option-btn" onclick="selectOption('aroma', 'Citrus', 7)"><span
+                            class="option-key">B</span> Citrus</button>
+                    <button class="option-btn" onclick="selectOption('aroma', 'Floral', 7)"><span
+                            class="option-key">C</span> Floral</button>
+                    <button class="option-btn" onclick="showOtherAroma()"><span class="option-key">D</span>
+                        Other</button>
+                </div>
+                <div id="other-aroma-wrap" style="display:none; margin-top: 20px;">
+                    <input type="text" id="aroma-other" placeholder="Tell us your preference..."
+                        onkeypress="if(event.key === 'Enter') submitText('aroma', 'aroma-other', 7)">
+                </div>
+                <div class="nav-btns">
+                    <button class="btn-back" onclick="prevStep()">Back</button>
+                </div>
+            </div>
+
+            <!-- Step 7: Health -->
+            <div class="step" id="step-7">
+                <span class="step-label">Holistic Health</span>
+                <h2 class="step-title">Are there any specific health challenges we should know about?</h2>
+                <p class="step-subtitle">Essential oils can heal the mind and the body if made with the right elements.
+                </p>
+                <textarea id="health-desc" placeholder="Feel free to share here..." required></textarea>
+                <div class="nav-btns">
+                    <button class="btn-back" onclick="prevStep()">Back</button>
+                    <button class="btn-next" onclick="submitText('healthChallenges', 'health-desc', 8)">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 8: Contact -->
+            <div class="step" id="step-8">
+                <span class="step-label">The Final Step</span>
+                <h2 class="step-title">Great! You're all set.</h2>
+                <p class="step-subtitle">We will send you our recommendations on Whatsapp. Enter your phone number to
+                    receive them.</p>
+                <input type="tel" id="user-phone" placeholder="+91 9876543210" required>
+                <div class="nav-btns">
+                    <button class="btn-back" onclick="prevStep()">Back</button>
+                    <button class="btn-submit" onclick="finishQuiz()">Submit Consultation</button>
+                </div>
+            </div>
+
+            <!-- Step 9: Success -->
+            <div class="step" id="step-9">
+                <div class="success-content">
+                    <span class="success-icon">🌿</span>
+                    <h2 class="step-title success-title">Thank you!</h2>
+                    <p class="success-text">Your consultation data is ready. Click the button below to send your results
+                        to our aromatherapists via WhatsApp. We will then contact you with your personalized Zen
+                        routine.</p>
+                    <div
+                        style="margin-top: 40px; display: flex; flex-direction: column; gap: 15px; align-items: center;">
+                        <a id="whatsapp-link" href="#" target="_blank" class="btn-primary"
+                            style="text-decoration: none; width: 100%; max-width: 300px; text-align: center;">Send via
+                            WhatsApp</a>
+                        <button class="btn-back" onclick="window.location.href='index.html'">Back to Home</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 0;
+        let quizData = {
+            age: '',
+            gender: '',
+            care: [],
+            skinDescription: '',
+            hairDescription: '',
+            aroma: '',
+            healthChallenges: '',
+            phone: ''
+        };
+
+        const totalSteps = 8;
+
+        function updateProgress() {
+            const percent = (currentStep / totalSteps) * 100;
+            document.getElementById('progress').style.width = percent + '%';
+        }
+
+        function showStep(n) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step-' + n).classList.add('active');
+            currentStep = n;
+            updateProgress();
+        }
+
+        function nextStep() {
+            showStep(currentStep + 1);
+        }
+
+        function prevStep() {
+            // Handle logical back-branching
+            if (currentStep === 6) { // From Aroma
+                if (quizData.care.includes('Hair & Wellness')) {
+                    showStep(5);
+                } else if (quizData.care.includes('Skin Care')) {
+                    showStep(4);
+                } else {
+                    showStep(3);
+                }
+            } else if (currentStep === 5) { // From Hair Desc
+                if (quizData.care.includes('Skin Care')) {
+                    showStep(4);
+                } else {
+                    showStep(3);
+                }
+            } else {
+                showStep(currentStep - 1);
+            }
+        }
+
+        function selectOption(key, val, next) {
+            quizData[key] = val;
+            showStep(next);
+        }
+
+        function toggleMulti(btn) {
+            btn.classList.toggle('selected');
+        }
+
+        function handleCareSelection() {
+            const selected = Array.from(document.querySelectorAll('.option-btn.multi.selected')).map(b => b.dataset.val);
+            if (selected.length === 0) {
+                alert("Please select at least one care category.");
+                return;
+            }
+            quizData.care = selected;
+
+            // Logic branch
+            if (selected.includes('Skin Care')) {
+                showStep(4);
+            } else if (selected.includes('Hair & Wellness')) {
+                showStep(5);
+            } else {
+                showStep(6);
+            }
+        }
+
+        function submitText(key, inputId, next) {
+            const el = document.getElementById(inputId);
+            const val = el.value.trim();
+            if (!val) {
+                alert("This field is mandatory. Please provide a brief description.");
+                el.focus();
+                return;
+            }
+            quizData[key] = val;
+
+            // Contextual next
+            if (currentStep === 4) { // Skin Desc
+                if (quizData.care.includes('Hair & Wellness')) {
+                    showStep(5);
+                } else {
+                    showStep(6);
+                }
+            } else if (next) {
+                showStep(next);
+            } else {
+                nextStep();
+            }
+        }
+
+        function showOtherAroma() {
+            document.querySelector('#step-6 .options-grid').style.display = 'none';
+            document.getElementById('other-aroma-wrap').style.display = 'block';
+        }
+
+        function finishQuiz() {
+            const phoneEl = document.getElementById('user-phone');
+            const phone = phoneEl.value.trim();
+
+            // Phone validation: 10 digits + optional international code
+            const phoneRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+            if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+                alert("Please enter a valid 10-digit phone number. International codes (e.g., +91) are allowed.");
+                phoneEl.focus();
+                return;
+            }
+            quizData.phone = phone;
+
+            // WhatsApp Bridge Logic
+            const businessNumber = "919971770540"; // Zen Oils business number
+            let message = `Hi Zen Oils! I just completed the *Find Your Zen* consultation quiz.%0A%0A`;
+            message += `*Age:* ${quizData.age}%0A`;
+            message += `*Gender:* ${quizData.gender}%0A`;
+            message += `*Care Categories:* ${quizData.care.join(', ')}%0A`;
+
+            if (quizData.skinDescription) message += `*Skin:* ${quizData.skinDescription}%0A`;
+            if (quizData.hairDescription) message += `*Hair:* ${quizData.hairDescription}%0A`;
+
+            message += `*Aroma Preference:* ${quizData.aroma}%0A`;
+
+            if (quizData.healthChallenges) message += `*Health Context:* ${quizData.healthChallenges}%0A`;
+
+            message += `%0A*My Phone:* ${quizData.phone}`;
+
+            const waLink = `https://wa.me/${businessNumber}?text=${message}`;
+
+            // Update the success screen with the link
+            document.getElementById('whatsapp-link').href = waLink;
+
+            showStep(9);
+        }
+    </script>
+    <footer>
+        <div>
+            <span class="footer-logo">ZEN<br>OILS</span>
+            <p class="footer-tagline">Pure skin and hair care, handcrafted with the finest natural ingredients. Beauty
+                that's
+                honest, inside and out.</p>
+        </div>
+        <div>
+            <div class="footer-col-title">Shop</div>
+            <ul class="footer-links">
+                <li><a href="skincare.html">Skin Care</a></li>
+                <li><a href="haircare.html">Hair & Wellness</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Support</div>
+            <ul class="footer-links">
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="quiz.html">Book Consultation</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Shipping & Returns</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+    <div class="footer-bottom">&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+
+    <script src="cart.js"></script>
+</body>
+
+</html>

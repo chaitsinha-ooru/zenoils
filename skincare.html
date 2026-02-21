@@ -15,14 +15,24 @@
 <body>
 
     <nav>
-        <div class="nav-logo">ZEN<br>OILS</div>
+        <a href="index.html" class="nav-logo" style="text-decoration: none;">ZEN<br>OILS</a>
         <ul class="nav-links">
             <li><a href="skincare.html" class="active">Skin Care</a></li>
-            <li><a href="haircare.html">Hair Care</a></li>
-            <li><a href="index.html#products">Bundles</a></li>
+            <li><a href="haircare.html">Hair & Wellness</a></li>
             <li><a href="index.html#about">About</a></li>
         </ul>
-        <button class="nav-cta">Shop Now</button>
+        <div style="display: flex; align-items: center; gap: 24px;">
+            <a href="cart.html" style="position: relative; color: var(--bark); display: flex; align-items: center;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
+                <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
+            </a>
+            <button class="nav-cta" onclick="window.location.href='index.html#products'">Shop Now</button>
+        </div>
     </nav>
 
     <header class="category-header">
@@ -34,28 +44,90 @@
     <section class="product-grid">
         <div class="product-card">
             <a href="product.html" class="product-link">
-                <div class="product-image-wrapper">🌿</div>
+                <div class="product-image-wrapper"><img src="images/facial-oil.jpg" alt="Facial Oil"
+                        style="width:100%; height:100%; object-fit:cover;"></div>
                 <div class="product-info">
-                    <h3 class="product-name">Rose Radiance Serum</h3>
-                    <p class="product-one-liner">A brightening blend of Bulgarian Rose and Vitamin C.</p>
+                    <h3 class="product-name">Facial Oil</h3>
+                    <p class="product-one-liner">Premium rejuvenation with Jojoba, Rosehip, and Vitamin E.</p>
                 </div>
             </a>
             <div class="product-price-row">
-                <span class="product-price">$48.00</span>
+                <span class="product-price">&#8377;1,000</span>
                 <button class="add-to-cart-btn">Add to Cart</button>
             </div>
         </div>
 
         <div class="product-card">
             <a href="product.html" class="product-link">
-                <div class="product-image-wrapper">🍃</div>
+                <div class="product-image-wrapper"><img src="images/facial-mist.jpg" alt="Facial Mist"
+                        style="width:100%; height:100%; object-fit:cover;"></div>
                 <div class="product-info">
-                    <h3 class="product-name">Sage Clarifying Oil</h3>
-                    <p class="product-one-liner">Balance and purify with wild-harvested sage essence.</p>
+                    <h3 class="product-name">Facial Mist</h3>
+                    <p class="product-one-liner">Refreshing rose water mist with Vitamin E and Glycerin.</p>
                 </div>
             </a>
             <div class="product-price-row">
-                <span class="product-price">$42.00</span>
+                <span class="product-price">&#8377;255</span>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <a href="product.html" class="product-link">
+                <div class="product-image-wrapper"><img src="images/facial-scrub.jpg" alt="Facial Scrub"
+                        style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Facial Scrub</h3>
+                    <p class="product-one-liner">Luxury scrub with dry fruits and flower petal powders.</p>
+                </div>
+            </a>
+            <div class="product-price-row">
+                <span class="product-price">&#8377;1,100 <small>(Pack of 2)</small></span>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <a href="product.html" class="product-link">
+                <div class="product-image-wrapper"><img src="images/body-polish.jpg" alt="Body Polisher"
+                        style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Body Polisher</h3>
+                    <p class="product-one-liner">Traditional exfoliating scrub with Healing Clay and Turmeric.</p>
+                </div>
+            </a>
+            <div class="product-price-row">
+                <span class="product-price">&#8377;400 <small>(Pack of 2)</small></span>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <a href="product.html" class="product-link">
+                <div class="product-image-wrapper"><img src="images/lip-balm.jpg" alt="Lip Balm"
+                        style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Lip Balm</h3>
+                    <p class="product-one-liner">Deeply moisturizing organic beeswax and shea butter.</p>
+                </div>
+            </a>
+            <div class="product-price-row">
+                <span class="product-price">&#8377;350</span>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <a href="product.html" class="product-link">
+                <div class="product-image-wrapper"><img src="images/oral-health-oil.jpg" alt="Oral Health Oil"
+                        style="width:100%; height:100%; object-fit:cover;"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Oral Health Oil</h3>
+                    <p class="product-one-liner">Natural oil pulling blend with Clove and Cinnamon.</p>
+                </div>
+            </a>
+            <div class="product-price-row">
+                <span class="product-price">&#8377;350</span>
                 <button class="add-to-cart-btn">Add to Cart</button>
             </div>
         </div>
@@ -71,31 +143,22 @@
             <div class="footer-col-title">Shop</div>
             <ul class="footer-links">
                 <li><a href="skincare.html">Skin Care</a></li>
-                <li><a href="haircare.html">Hair Care</a></li>
-                <li><a href="index.html#products">Bundles</a></li>
-                <li><a href="#">Gift Sets</a></li>
-            </ul>
-        </div>
-        <div>
-            <div class="footer-col-title">Company</div>
-            <ul class="footer-links">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Our Ingredients</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Press</a></li>
+                <li><a href="haircare.html">Hair & Wellness</a></li>
             </ul>
         </div>
         <div>
             <div class="footer-col-title">Support</div>
             <ul class="footer-links">
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="quiz.html">Book Consultation</a></li>
                 <li><a href="#">FAQ</a></li>
-                <li><a href="#">Shipping</a></li>
-                <li><a href="#">Returns</a></li>
+                <li><a href="#">Shipping & Returns</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>
     </footer>
     <div class="footer-bottom">&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+    <script src="cart.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout — Zen Oils</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cart-hero {
+            padding: 160px 60px 80px;
+            background: var(--warm-white);
+            text-align: center;
+        }
+
+        .cart-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px;
+        }
+
+        /* Checkout Form Styles */
+        .checkout-view {
+            display: none;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(74, 55, 40, 0.15);
+            background: white;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+        }
+
+        .checkout-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        .checkout-header:hover {
+            color: var(--bark);
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 120px 1fr auto auto;
+            align-items: center;
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(74, 55, 40, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .cart-item img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .cart-summary {
+            background: white;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 31, 20, 0.8);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--warm-white);
+            padding: 50px;
+            border-radius: 2px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 25px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: 300;
+            cursor: pointer;
+            color: var(--bark);
+        }
+
+        .btn-upi {
+            width: 100%;
+            background: var(--bark);
+            color: white;
+            padding: 16px;
+            border: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+    </style>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("zb96qGUSYQ5yvJP7P"); // Replace with your EmailJS Public Key
+        })();
+    </script>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo" style="text-decoration: none;">ZEN<br>OILS</a>
+        <ul class="nav-links">
+            <li><a href="skincare.html">Skin Care</a></li>
+            <li><a href="haircare.html">Hair & Wellness</a></li>
+            <li><a href="index.html#about">About</a></li>
+        </ul>
+        <a href="cart.html" style="position: relative; color: var(--bark);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+            <span id="cart-badge" class="cart-badge">0</span>
+        </a>
+    </nav>
+
+    <header class="cart-hero">
+        <h1 class="category-title" id="page-title">Your <em>Cart</em></h1>
+        <p class="category-description" id="page-subtitle">Verify your choices before we prepare your personalized oils.
+        </p>
+    </header>
+
+    <div class="cart-container">
+        <!-- Step 1: Cart View -->
+        <div id="cart-view" style="display: grid; grid-template-columns: 2fr 1fr; gap: 60px;">
+            <div id="items-list"></div>
+            <div id="cart-summary-section"></div>
+        </div>
+
+        <!-- Step 2: Checkout View -->
+        <div id="checkout-view" class="checkout-view">
+            <div class="checkout-header" onclick="showCart()"><span>&larr; Back to Cart</span></div>
+            <form id="shipping-form">
+                <h2 class="summary-title" style="text-align: left; margin-bottom: 30px;">Shipping Details</h2>
+                <div class="form-group"><label>Full Name</label><input type="text" id="cust-name" required></div>
+                <div class="form-group"><label>Email Address</label><input type="email" id="cust-email" required></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" id="cust-phone"
+                        placeholder="+91 9876543210" required></div>
+                <div class="form-group"><label>Address</label><textarea id="cust-address" required rows="3"></textarea>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group"><label>City</label><input type="text" id="cust-city" required></div>
+                    <div class="form-group"><label>Pincode</label><input type="text" id="cust-pincode"
+                            placeholder="6-digit India Pincode" maxlength="6" required></div>
+                </div>
+                <button type="submit" class="btn-upi">Continue to Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- UPI Modal -->
+    <div id="upi-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeUPIModal()">&times;</span>
+            <h2 class="summary-title" style="margin-bottom: 20px;">Pay via UPI</h2>
+            <div id="upi-qr-container"
+                style="background: white; padding: 20px; display: inline-block; border: 1px solid #eee; margin-bottom: 20px;">
+            </div>
+            <p style="font-size: 18px; font-weight: 500; color: var(--bark);" id="upi-amount-display"></p>
+            <button class="btn-primary" style="margin-top: 30px; width: 100%; border-radius: 2px;"
+                onclick="handlePaymentCompletion()">I have paid</button>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <span class="footer-logo">ZEN<br>OILS</span>
+            <p class="footer-tagline">Pure skin and hair care, handcrafted with the finest natural ingredients. Beauty
+                that's
+                honest, inside and out.</p>
+        </div>
+        <div>
+            <div class="footer-col-title">Shop</div>
+            <ul class="footer-links">
+                <li><a href="skincare.html">Skin Care</a></li>
+                <li><a href="haircare.html">Hair & Wellness</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">Support</div>
+            <ul class="footer-links">
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="quiz.html">Book Consultation</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Shipping & Returns</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+    <div class="footer-bottom">&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+
+    <script src="cart.js"></script>
+    <script>
+        let currentAmount = 0;
+        function renderCart() {
+            const list = document.getElementById('items-list');
+            const summary = document.getElementById('cart-summary-section');
+            if (cart.length === 0) {
+                document.getElementById('cart-view').innerHTML = `<div style="grid-column: span 2; text-align: center; padding: 100px 0;">
+                    <p style="margin-bottom: 30px;">Your cart is empty.</p><a href="index.html#products" class="btn-primary">Shop Now</a></div>`;
+                return;
+            }
+            let subtotal = 0;
+            list.innerHTML = cart.map((item, index) => {
+                subtotal += item.price * item.quantity;
+                return `<div class="cart-item">
+                    <img src="${item.image}">
+                    <div><h3>${item.name}</h3><p style="font-size: 13px; color: var(--text-light);">Boutique Handcrafted Oil</p></div>
+                    <div class="cart-qty" style="display:flex; gap:15px; border:1px solid #eee; padding:5px 15px;">
+                        <button onclick="changeQty(${index},-1)" style="border:0; background:0; cursor:pointer;">−</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="changeQty(${index},1)" style="border:0; background:0; cursor:pointer;">+</button>
+                    </div>
+                    <div>₹${(item.price * item.quantity).toLocaleString()}</div>
+                </div>`;
+            }).join('');
+            currentAmount = subtotal;
+            summary.innerHTML = `<div class="cart-summary">
+                <h2 class="summary-title">Summary</h2>
+                <div style="display:flex; justify-content:space-between; margin-bottom:15px;"><span>Subtotal</span><span>₹${subtotal.toLocaleString()}</span></div>
+                <div style="display:flex; justify-content:space-between; margin-top:20px; border-top:1px solid #eee; padding-top:20px; font-size:20px; font-weight:500;"><span>Total</span><span>₹${subtotal.toLocaleString()}</span></div>
+                <button class="btn-upi" onclick="showCheckout()" style="margin-top:30px;">Proceed to Checkout</button>
+            </div>`;
+        }
+
+        function showCheckout() {
+            document.getElementById('cart-view').style.display = 'none';
+            document.getElementById('checkout-view').style.display = 'block';
+            document.getElementById('page-title').innerHTML = 'Shipping <em>Details</em>';
+            window.scrollTo(0, 0);
+        }
+        function showCart() {
+            document.getElementById('cart-view').style.display = 'grid';
+            document.getElementById('checkout-view').style.display = 'none';
+            document.getElementById('page-title').innerHTML = 'Your <em>Cart</em>';
+            window.scrollTo(0, 0);
+        }
+
+        document.getElementById('shipping-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Basic Validity Checks
+            const phone = document.getElementById('cust-phone').value;
+            const pincode = document.getElementById('cust-pincode').value;
+
+            // Phone validation: 10 digits + optional international code
+            // Supporting formats: +91 9876543210, 9876543210, +1-9876543210 etc.
+            const phoneRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+            if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+                alert("Please enter a valid 10-digit phone number. International codes (e.g., +91) are allowed.");
+                return;
+            }
+
+            // India Pincode validation: Exactly 6 digits, starting with 1-9
+            if (!/^[1-9][0-9]{5}$/.test(pincode)) {
+                alert("Please enter a valid 6-digit Indian Pincode (starts with 1-9).");
+                return;
+            }
+
+            const upiUrl = `upi://pay?pa=vijaylaxmi.sinha@okhdfcbank&pn=Zen%20Oils%20India&am=${currentAmount}&cu=INR`;
+            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                window.location.href = upiUrl;
+            } else {
+                const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiUrl)}`;
+                document.getElementById('upi-qr-container').innerHTML = `<img src="${qrUrl}">`;
+                document.getElementById('upi-amount-display').textContent = `Total Amount: ₹${currentAmount.toLocaleString()}`;
+                document.getElementById('upi-modal').style.display = 'flex';
+            }
+        });
+
+        function handlePaymentCompletion() {
+            const orderId = 'ZO-' + Math.floor(100000 + Math.random() * 900000);
+            const data = {
+                order_id: orderId,
+                to_name: document.getElementById('cust-name').value,
+                to_email: document.getElementById('cust-email').value,
+                phone: document.getElementById('cust-phone').value,
+                address: `${document.getElementById('cust-address').value}, ${document.getElementById('cust-city').value} - ${document.getElementById('cust-pincode').value}`,
+                items: cart.map(i => `${i.name} x${i.quantity}`).join(', '),
+                total: currentAmount.toLocaleString('en-IN')
+            };
+
+            emailjs.send("service_d9tjw2s", "8r8cqtq", data).then(() => {
+                alert(`Order ${orderId} Placed! A confirmation email has been sent to ${data.to_email}`);
+                localStorage.removeItem('zenoils_cart');
+                window.location.href = "index.html";
+            }, (err) => {
+                console.error(err);
+                alert(`Order ${orderId} Placed! (Connect EmailJS to send the receipt automatically)`);
+                localStorage.removeItem('zenoils_cart');
+                window.location.href = "index.html";
+            });
+        }
+
+        function closeUPIModal() { document.getElementById('upi-modal').style.display = 'none'; }
+        function changeQty(i, d) { cart[i].quantity += d; if (cart[i].quantity < 1) cart.splice(i, 1); saveCart(); renderCart(); updateCartBadge(); }
+        document.addEventListener('DOMContentLoaded', renderCart);
+    </script>
+</body>
+
+</html>
