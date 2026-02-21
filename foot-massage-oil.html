@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foot Massage Oil — Zen Oils</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="product.css">
+</head>
+
+<body>
+
+  <!-- NAV (identical to homepage) -->
+  <nav>
+    <a href="index.html" class="nav-logo" style="text-decoration: none;">ZEN<br>OILS</a>
+    <ul class="nav-links">
+      <li><a href="skincare.html">Skin Care</a></li>
+      <li><a href="haircare.html">Hair & Wellness</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
+    <div style="display: flex; align-items: center; gap: 24px;">
+      <a href="cart.html" style="position: relative; color: var(--bark); display: flex; align-items: center;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1" />
+          <circle cx="20" cy="21" r="1" />
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+        </svg>
+        <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
+      </a>
+      <button class="nav-cta" onclick="window.location.href='index.html#products'">Shop Now</button>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>→</span>
+    <a href="haircare.html">Hair & Wellness</a>
+    <span>→</span>
+    <span class="breadcrumb-current">Foot Massage Oil</span>
+  </div>
+
+  <!-- PRODUCT HERO -->
+  <section class="product-hero">
+    <div class="product-gallery">
+      <div class="product-main-img">
+        <div class="product-main-visual">
+          <img src="images/foot-massage-oil.jpg" alt="Foot Massage Oil"
+            style="width:100%; height:100%; object-fit:contain;">
+          <div class="product-glow"></div>
+        </div>
+        <span class="product-hero-badge">Bestseller</span>
+      </div>
+      <div class="product-thumbs">
+        <div class="thumb thumb-active"><img src="images/foot-massage-oil.jpg" alt="Thumb 1"></div>
+        <div class="thumb"><img src="images/pain-relief-oil.jpg" alt="Thumb 2"></div>
+        <div class="thumb"><img src="images/body-polish.jpg" alt="Thumb 3"></div>
+        <div class="thumb"><img src="images/lip-balm.jpg" alt="Thumb 4"></div>
+      </div>
+    </div>
+
+    <div class="product-info-panel">
+      <p class="product-collection-tag">✦ Hair & Wellness Collection</p>
+      <h1 class="product-title">Foot Massage<br><em>Oil</em></h1>
+      <p class="product-subtitle">Relaxing Lavender & Peppermint Therapy</p>
+
+      <div class="product-rating">
+        <span class="stars">★★★★★</span>
+        <span class="rating-count">4.8 (89 reviews)</span>
+      </div>
+
+      <div class="product-price-block">
+        <span class="price-main"><span class="currency">₹</span>400</span>
+        <span class="price-volume">100ml</span>
+      </div>
+
+      <div class="product-divider"></div>
+
+      <p class="product-description">
+        Treat your tired feet to the ultimate relaxation with our Foot Massage Oil. Expertly blended with cooling
+        Peppermint and calming Lavender, it relieves soreness, softens tough skin, and promotes a restful night's sleep.
+      </p>
+      <p class="product-description" style="margin-top: 14px;">
+        Inspired by traditional reflexology practices, this oil helps balance the body's energy while providing intense
+        moisture to dry, cracked heels.
+      </p>
+
+      <div class="product-divider"></div>
+
+      <!-- SIZE SELECTOR -->
+      <div class="selector-group">
+        <p class="selector-label">Size</p>
+        <div class="size-options">
+          <button class="size-btn size-active">30ml</button>
+          <button class="size-btn">50ml <span class="size-note">Save 10%</span></button>
+        </div>
+      </div>
+
+      <!-- QUANTITY -->
+      <div class="selector-group">
+        <p class="selector-label">Quantity</p>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <span class="qty-value" id="qty">1</span>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+      </div>
+
+      <!-- CTA BUTTONS -->
+      <div class="product-ctas">
+        <button class="btn-primary btn-full">Add to Cart</button>
+        <button class="btn-outline btn-full">Buy Now</button>
+      </div>
+
+      <!-- MINI TRUST -->
+      <div class="mini-trust">
+        <div class="mini-trust-item"><span>🌱</span> 100% Natural</div>
+        <div class="mini-trust-item"><span>✋</span> Handcrafted</div>
+        <div class="mini-trust-item"><span>🚚</span> Free Delivery over <span class="currency">₹</span>999</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT DETAILS TABS -->
+  <section class="product-details-section">
+    <div class="tabs">
+      <button class="tab tab-active" onclick="showTab('ingredients', this)">Ingredients</button>
+      <button class="tab" onclick="showTab('howto', this)">How to Use</button>
+      <button class="tab" onclick="showTab('about', this)">About the Formula</button>
+    </div>
+
+    <div class="tab-content" id="tab-ingredients">
+      <div class="ingredients-layout">
+        <div class="ingredients-hero-text">
+          <span class="section-tag">✦ What's Inside</span>
+          <h2 class="section-title" style="text-align:left;">Pure. <em>Honest.</em><br>Ingredients.</h2>
+          <p class="ingredients-intro">Every ingredient is chosen with purpose. We use only what your skin needs —
+            nothing more.</p>
+        </div>
+        <div class="ingredients-grid">
+          <div class="ingredient-card">
+            <div class="ingredient-icon">🪻</div>
+            <div>
+              <div class="ingredient-name">Lavender Oil</div>
+              <div class="ingredient-benefit">Known for its ability to relax the mind and soothe skin irritations.</div>
+            </div>
+          </div>
+          <div class="ingredient-card">
+            <div class="ingredient-icon">🍃</div>
+            <div>
+              <div class="ingredient-name">Peppermint Oil</div>
+              <div class="ingredient-benefit">Provides a cooling, tingling sensation that relieves foot fatigue.</div>
+            </div>
+          </div>
+          <div class="ingredient-card">
+            <div class="ingredient-icon">🌰</div>
+            <div>
+              <div class="ingredient-name">Sesame Oil</div>
+              <div class="ingredient-benefit">A warming base oil that penetrates deep into the tissues.</div>
+            </div>
+          </div>
+        </div>
+        <div class="full-inci">
+          <p class="inci-label">Full INCI List</p>
+          <p class="inci-text">Sesamum Indicum Seed Oil, Lavandula Angustifolia Oil, Mentha Piperita Oil, Melaleuca
+            Alternifolia Leaf Oil, Tocopherol</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="tab-howto">
+      <div class="howto-layout">
+        <div class="howto-intro">
+          <span class="section-tag">✦ Application</span>
+          <h2 class="section-title" style="text-align:left;">How to <em>Use</em></h2>
+          <p class="ingredients-intro">For best results, use morning and evening as part of your daily routine.</p>
+        </div>
+        <div class="howto-steps">
+          <div class="howto-step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <div class="step-title">Cleanse</div>
+              <div class="step-text">Wash your feet with warm water and pat dry before application.</div>
+            </div>
+          </div>
+          <div class="howto-step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <div class="step-title">Massage</div>
+              <div class="step-text">Apply a generous amount of oil and massage each foot for 5–10 minutes, focusing on
+                the soles and heels.</div>
+            </div>
+          </div>
+          <div class="howto-step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <div class="step-title">Reflexology</div>
+              <div class="step-text">Apply firm pressure to the arch of the foot to help release tension throughout the
+                body.</div>
+            </div>
+          </div>
+          <div class="howto-step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              <div class="step-title">Protect</div>
+              <div class="step-text">Put on a pair of clean cotton socks after massage to lock in the moisture and
+                prevent slipping.</div>
+            </div>
+          </div>
+        </div>
+        <div class="howto-tip">
+          <span>💡</span>
+          <p>Visible results typically appear after 4–6 weeks of consistent use. Store in a cool, dark place away from
+            direct sunlight.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="tab-about">
+      <div class="about-layout">
+        <div class="about-text-block">
+          <span class="section-tag">✦ The Formula</span>
+          <h2 class="section-title" style="text-align:left;">Crafted with<br><em>Intention</em></h2>
+          <p class="about-text">The Rose Radiance Serum was born from a simple question: why do brightening serums need
+            synthetic acids, artificial stabilisers, and preservatives that irritate sensitive skin?</p>
+          <p class="about-text">We spent 14 months sourcing and testing cold-pressed rosehip oils from small farms in
+            Chile and South Africa, finally settling on a blend that delivers consistent potency without refinement or
+            dilution.</p>
+          <p class="about-text">Every bottle is filled, sealed, and labelled by hand in our workshop in Delhi. Batch
+            numbers are printed on each bottle — you can trace exactly when and how your serum was made.</p>
+        </div>
+        <div class="about-stats">
+          <div class="about-stat">
+            <div class="stat-number">14</div>
+            <div class="stat-label">Months in<br>Development</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Active<br>Botanicals</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Synthetic<br>Ingredients</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Cold-Pressed<br>Oils</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section" style="background: var(--warm-white);">
+    <div class="section-header">
+      <span class="section-tag">✦ Real Results</span>
+      <h2 class="section-title">What Customers <em>Say</em></h2>
+    </div>
+    <div class="reviews-track">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-date">Verified Purchase — Jan 2024</div>
+        <p class="review-text">"My skin has never felt this soft. After two months of use my dark spots have visibly
+          faded. I recommend this to everyone."</p>
+        <div class="review-author">— Ananya K., Mumbai</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-date">Verified Purchase — Dec 2023</div>
+        <p class="review-text">"I was sceptical about a natural serum working as well as clinical ones — I was
+          completely wrong. My skin is glowing."</p>
+        <div class="review-author">— Meera T., Delhi</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-date">Verified Purchase — Feb 2024</div>
+        <p class="review-text">"Lightweight, absorbs instantly and smells divine. This is the only serum I've used
+          consistently for more than a week."</p>
+        <div class="review-author">— Roshni P., Bangalore</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- YOU MAY ALSO LIKE -->
+  <section class="related-section">
+    <div class="section-header">
+      <span class="section-tag">✦ Complete Your Routine</span>
+      <h2 class="section-title">You May Also <em>Like</em></h2>
+    </div>
+    <div class="related-grid">
+      <a href="facial-mist.html" class="related-card">
+        <div class="related-img"><img src="images/facial-mist.jpg" alt="Facial Mist"
+            style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="related-info">
+          <div class="product-name">Facial Mist</div>
+          <div class="product-desc">Pure rose water hydration</div>
+          <div class="related-footer">
+            <span class="product-price"><span class="currency">₹</span>255</span>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </a>
+      <a href="hair-oil.html" class="related-card">
+        <div class="related-img"><img src="images/hair-oil.jpg" alt="Hair Oil"
+            style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="related-info">
+          <div class="product-name">Hair Oil</div>
+          <div class="product-desc">Deep nourishment for all hair types</div>
+          <div class="related-footer">
+            <span class="product-price"><span class="currency">₹</span>600</span>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </a>
+      <a href="body-oil.html" class="related-card">
+        <div class="related-img"><img src="images/body-oil.jpg" alt="Body Oil"
+            style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="related-info">
+          <div class="product-name">Body Oil</div>
+          <div class="product-desc">Lightweight Ayurvedic hydration</div>
+          <div class="related-footer">
+            <span class="product-price"><span class="currency">₹</span>650</span>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <span class="footer-logo">ZEN<br>OILS</span>
+      <p class="footer-tagline">Pure skin and hair care, handcrafted with the finest natural ingredients. Beauty that's
+        honest, inside and out.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Shop</div>
+      <ul class="footer-links">
+        <li><a href="skincare.html">Skin Care</a></li>
+        <li><a href="haircare.html">Hair & Wellness</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Support</div>
+      <ul class="footer-links">
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="quiz.html">Book Consultation</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+
+  <script>
+    function changeQty(delta) {
+      const el = document.getElementById('qty');
+      let val = parseInt(el.textContent) + delta;
+      if (val < 1) val = 1;
+      if (val > 10) val = 10;
+      el.textContent = val;
+    }
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('tab-active'));
+      document.getElementById('tab-' + id).classList.remove('hidden');
+      btn.classList.add('tab-active');
+    }
+    document.querySelectorAll('.thumb').forEach(t => {
+      t.addEventListener('click', function () {
+        document.querySelectorAll('.thumb').forEach(x => x.classList.remove('thumb-active'));
+        this.classList.add('thumb-active');
+      });
+    });
+    document.querySelectorAll('.size-btn').forEach(b => {
+      b.addEventListener('click', function () {
+        document.querySelectorAll('.size-btn').forEach(x => x.classList.remove('size-active'));
+        this.classList.add('size-active');
+      });
+    });
+  </script>
+  <script src="cart.js"></script>
+</body>
+
+</html>

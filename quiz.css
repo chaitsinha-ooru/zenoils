@@ -1,6 +1,7 @@
 :root {
   --quiz-bg: #f8f5f0;
-  --quiz-accent: #7A8C72; /* Sage */
+  --quiz-accent: #7A8C72;
+  /* Sage */
   --quiz-text: #2C1F14;
   --quiz-card-bg: rgba(255, 255, 255, 0.8);
 }
@@ -21,7 +22,8 @@
   width: 100%;
   max-width: 600px;
   padding: 60px;
-  border-radius: 4px; /* Matching Zen Oils blocky aesthetic */
+  border-radius: 4px;
+  /* Matching Zen Oils blocky aesthetic */
   box-shadow: 0 40px 100px rgba(74, 55, 40, 0.1);
   border: 1px solid rgba(122, 140, 114, 0.1);
   position: relative;
@@ -48,8 +50,15 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .step-label {
@@ -120,7 +129,7 @@
 }
 
 /* Inputs */
-input[type="text"], 
+input[type="text"],
 input[type="tel"],
 textarea {
   width: 100%;
@@ -141,7 +150,8 @@ textarea {
   resize: none;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   border-color: var(--quiz-accent);
 }
 
@@ -152,7 +162,8 @@ input:focus, textarea:focus {
   margin-top: 20px;
 }
 
-.btn-next, .btn-submit {
+.btn-next,
+.btn-submit {
   background: #4A3728;
   color: #D4B896;
   padding: 16px 40px;
@@ -164,7 +175,8 @@ input:focus, textarea:focus {
   transition: all 0.3s;
 }
 
-.btn-next:hover, .btn-submit:hover {
+.btn-next:hover,
+.btn-submit:hover {
   background: #2C1F14;
   transform: translateY(-2px);
 }
@@ -209,11 +221,33 @@ input:focus, textarea:focus {
 
 @media (max-width: 600px) {
   .quiz-card {
-    padding: 40px 24px;
-    height: 100vh;
+    padding: 60px 24px 40px;
+    min-height: 100vh;
     border-radius: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+  }
+
+  .step-title {
+    font-size: 28px;
+  }
+
+  .nav-btns {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-next,
+  .btn-submit,
+  .btn-primary {
+    width: 100%;
+  }
+
+  .btn-back {
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    order: 2;
   }
 }

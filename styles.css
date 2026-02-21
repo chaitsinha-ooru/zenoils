@@ -29,6 +29,12 @@ body {
   overflow-x: hidden;
 }
 
+.currency {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  margin-right: 2px;
+}
+
 nav {
   position: fixed;
   top: 0;
@@ -803,39 +809,111 @@ a {
 
   .hero {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
 
   .hero-right {
-    height: 300px;
+    height: 400px;
+    order: -1;
+    /* Image first on mobile for better visual entry */
   }
 
   .hero-left {
-    padding: 60px 24px 40px;
+    padding: 40px 24px 60px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    text-align: center;
   }
 
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 
-  .founder-section,
+  .founder-section {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 24px;
+    text-align: center;
+  }
+
+  .founder-content {
+    text-align: center;
+  }
+
+  .section-tag {
+    text-align: center !important;
+  }
+
   .personalized-section {
     grid-template-columns: 1fr;
     gap: 40px;
     padding: 60px 24px;
+    text-align: center;
   }
 
-  .trust-bar,
+  .trust-bar {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+    gap: 32px;
+  }
+
   .products-section,
   .reviews-section {
-    padding: 40px 24px;
+    padding: 60px 24px;
+  }
+
+  .reviews-track {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .review-card {
+    min-width: 100%;
   }
 
   footer {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     padding: 40px 24px;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .footer-tagline {
+    margin: 0 auto 20px;
   }
 
   .footer-bottom {
     padding: 16px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 42px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-right {
+    height: 300px;
   }
 }

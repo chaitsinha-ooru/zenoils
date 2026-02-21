@@ -143,6 +143,24 @@
 
     .product-grid {
         padding: 40px 24px;
-        gap: 40px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-price-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .add-to-cart-btn {
+        width: 100%;
+        text-align: center;
     }
 }
