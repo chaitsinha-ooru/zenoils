@@ -33,8 +33,27 @@
         <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
       </a>
       <button class="nav-cta" onclick="window.location.href='index.html#products'">Shop Now</button>
+      <button class="mobile-menu-btn"
+        style="display: none; background: none; border: none; cursor: pointer; padding: 8px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
     </div>
   </nav>
+
+  <div class="mobile-menu-overlay">
+    <button class="mobile-menu-close">&times;</button>
+    <ul class="mobile-menu-links">
+      <li><a href="skincare.html">Skin Care</a></li>
+      <li><a href="haircare.html">Hair & Wellness</a></li>
+      <li><a href="index.html#about">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
 
   <!-- BREADCRUMB -->
   <div class="breadcrumb">
@@ -58,9 +77,6 @@
       </div>
       <div class="product-thumbs">
         <div class="thumb thumb-active"><img src="images/pain-relief-oil.jpg" alt="Thumb 1"></div>
-        <div class="thumb"><img src="images/foot-massage-oil.jpg" alt="Thumb 2"></div>
-        <div class="thumb"><img src="images/body-polish.jpg" alt="Thumb 3"></div>
-        <div class="thumb"><img src="images/lip-balm.jpg" alt="Thumb 4"></div>
       </div>
     </div>
 
@@ -68,11 +84,6 @@
       <p class="product-collection-tag">✦ Hair & Wellness Collection</p>
       <h1 class="product-title">Pain Relief<br><em>Oil</em></h1>
       <p class="product-subtitle">Warming Eucalyptus & Wintergreen Blend</p>
-
-      <div class="product-rating">
-        <span class="stars">★★★★★</span>
-        <span class="rating-count">4.9 (164 reviews)</span>
-      </div>
 
       <div class="product-price-block">
         <span class="price-main"><span class="currency">₹</span>450</span>
@@ -85,10 +96,6 @@
         Find fast-acting, natural relief with our Pain Relief Oil. This potent Ayurvedic formulation uses warming
         essential oils and botanical extracts to soothe sore muscles, reduce joint inflammation, and ease tension.
       </p>
-      <p class="product-description" style="margin-top: 14px;">
-        Deeply penetrative and non-sticky, it's an essential companion for post-workout recovery or managing chronic
-        discomfort.
-      </p>
 
       <div class="product-divider"></div>
 
@@ -96,8 +103,7 @@
       <div class="selector-group">
         <p class="selector-label">Size</p>
         <div class="size-options">
-          <button class="size-btn size-active">30ml</button>
-          <button class="size-btn">50ml <span class="size-note">Save 10%</span></button>
+          <button class="size-btn size-active">100ml</button>
         </div>
       </div>
 
@@ -113,8 +119,7 @@
 
       <!-- CTA BUTTONS -->
       <div class="product-ctas">
-        <button class="btn-primary btn-full">Add to Cart</button>
-        <button class="btn-outline btn-full">Buy Now</button>
+        <button class="btn-primary btn-full add-to-cart-btn">Add to Cart</button>
       </div>
 
       <!-- MINI TRUST -->
@@ -139,7 +144,7 @@
         <div class="ingredients-hero-text">
           <span class="section-tag">✦ What's Inside</span>
           <h2 class="section-title" style="text-align:left;">Pure. <em>Honest.</em><br>Ingredients.</h2>
-          <p class="ingredients-intro">Every ingredient is chosen with purpose. We use only what your skin needs —
+          <p class="ingredients-intro">Every ingredient is chosen with purpose. We use only what your body needs —
             nothing more.</p>
         </div>
         <div class="ingredients-grid">
@@ -153,7 +158,7 @@
           <div class="ingredient-card">
             <div class="ingredient-icon">❄️</div>
             <div>
-              <div class="ingredient-name">Wintergreen</div>
+              <div class="ingredient-name">Wintergreen Oil</div>
               <div class="ingredient-benefit">Contains methyl salicylate, a natural analgesic for pain relief.</div>
             </div>
           </div>
@@ -167,8 +172,8 @@
         </div>
         <div class="full-inci">
           <p class="inci-label">Full INCI List</p>
-          <p class="inci-text">Sesamum Indicum Seed Oil, Eucalyptus Globulus Leaf Oil, Gaultheria Procumbens Leaf Oil,
-            Cinnamomum Camphora Bark Oil, Menthol</p>
+          <p class="inci-text">Sesamum Indicum (Sesame) Seed Oil, Eucalyptus Globulus Leaf Oil, Gaultheria Procumbens
+            (Wintergreen) Leaf Oil, Cinnamomum Camphora Bark Oil, Menthol</p>
         </div>
       </div>
     </div>
@@ -178,7 +183,7 @@
         <div class="howto-intro">
           <span class="section-tag">✦ Application</span>
           <h2 class="section-title" style="text-align:left;">How to <em>Use</em></h2>
-          <p class="ingredients-intro">For best results, use morning and evening as part of your daily routine.</p>
+          <p class="ingredients-intro">Apply directly to areas of discomfort for localized relief.</p>
         </div>
         <div class="howto-steps">
           <div class="howto-step">
@@ -213,11 +218,6 @@
             </div>
           </div>
         </div>
-        <div class="howto-tip">
-          <span>💡</span>
-          <p>Visible results typically appear after 4–6 weeks of consistent use. Store in a cool, dark place away from
-            direct sunlight.</p>
-        </div>
       </div>
     </div>
 
@@ -226,30 +226,29 @@
         <div class="about-text-block">
           <span class="section-tag">✦ The Formula</span>
           <h2 class="section-title" style="text-align:left;">Crafted with<br><em>Intention</em></h2>
-          <p class="about-text">The Rose Radiance Serum was born from a simple question: why do brightening serums need
-            synthetic acids, artificial stabilisers, and preservatives that irritate sensitive skin?</p>
-          <p class="about-text">We spent 14 months sourcing and testing cold-pressed rosehip oils from small farms in
-            Chile and South Africa, finally settling on a blend that delivers consistent potency without refinement or
-            dilution.</p>
-          <p class="about-text">Every bottle is filled, sealed, and labelled by hand in our workshop in Delhi. Batch
-            numbers are printed on each bottle — you can trace exactly when and how your serum was made.</p>
+          <p class="about-text">This formula was born from the heritage of Indian wellness rituals, made inside a
+            private garden in Dehradun where nature meets handcrafted care.</p>
+          <p class="about-text">Every ingredient is sourced locally from India, ensuring we support local ecosystems
+            while delivering the freshest botanical potency to your body.</p>
+          <p class="about-text">Every bottle is filled, sealed, and labelled by hand. You can feel the artisanal touch
+            and the purity of Dehradun's botanical wealth in every use.</p>
         </div>
         <div class="about-stats">
           <div class="about-stat">
-            <div class="stat-number">14</div>
-            <div class="stat-label">Months in<br>Development</div>
-          </div>
-          <div class="about-stat">
-            <div class="stat-number">8</div>
-            <div class="stat-label">Active<br>Botanicals</div>
-          </div>
-          <div class="about-stat">
-            <div class="stat-number">0</div>
-            <div class="stat-label">Synthetic<br>Ingredients</div>
+            <div class="stat-number">Dehradun</div>
+            <div class="stat-label">Handcrafted<br>Location</div>
           </div>
           <div class="about-stat">
             <div class="stat-number">100%</div>
-            <div class="stat-label">Cold-Pressed<br>Oils</div>
+            <div class="stat-label">Locally Sourced<br>from India</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Synthetic<br>Fragrances</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">Pure</div>
+            <div class="stat-label">Comforting<br>Relief</div>
           </div>
         </div>
       </div>
@@ -352,13 +351,17 @@
       <ul class="footer-links">
         <li><a href="index.html#about">About Us</a></li>
         <li><a href="quiz.html">Book Consultation</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Shipping & Returns</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="faq.html#returns">Shipping & Returns</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </footer>
-  <div class="footer-bottom">&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+  <div class="footer-bottom">
+    <div>&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+    <div style="margin-top: 8px;"><a href="privacy-terms.html"
+        style="color: inherit; text-decoration: none; font-size: 0.8rem; opacity: 0.7;">Privacy Policy & Terms</a></div>
+  </div>
 
   <script>
     function changeQty(delta) {

@@ -1,0 +1,9 @@
+{
+    "name": "zenoils",
+    "version": "1.0.0",
+    "description": "Zen Oils E-commerce Site",
+    "main": "index.html",
+    "dependencies": {
+        "razorpay": "^2.9.2"
+    }
+}

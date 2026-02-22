@@ -33,8 +33,27 @@
         <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
       </a>
       <button class="nav-cta" onclick="window.location.href='index.html#products'">Shop Now</button>
+      <button class="mobile-menu-btn"
+        style="display: none; background: none; border: none; cursor: pointer; padding: 8px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
     </div>
   </nav>
+
+  <div class="mobile-menu-overlay">
+    <button class="mobile-menu-close">&times;</button>
+    <ul class="mobile-menu-links">
+      <li><a href="skincare.html">Skin Care</a></li>
+      <li><a href="haircare.html">Hair & Wellness</a></li>
+      <li><a href="index.html#about">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
 
   <!-- BREADCRUMB -->
   <div class="breadcrumb">
@@ -57,9 +76,6 @@
       </div>
       <div class="product-thumbs">
         <div class="thumb thumb-active"><img src="images/body-oil.jpg" alt="Thumb 1"></div>
-        <div class="thumb"><img src="images/facial-oil.jpg" alt="Thumb 2"></div>
-        <div class="thumb"><img src="images/body-polish.jpg" alt="Thumb 3"></div>
-        <div class="thumb"><img src="images/lip-balm.jpg" alt="Thumb 4"></div>
       </div>
     </div>
 
@@ -67,11 +83,6 @@
       <p class="product-collection-tag">✦ Hair & Wellness Collection</p>
       <h1 class="product-title">Body<br><em>Oil</em></h1>
       <p class="product-subtitle">Lightweight Ayurvedic Hydration</p>
-
-      <div class="product-rating">
-        <span class="stars">★★★★★</span>
-        <span class="rating-count">4.8 (145 reviews)</span>
-      </div>
 
       <div class="product-price-block">
         <span class="price-main"><span class="currency">₹</span>650</span>
@@ -82,12 +93,8 @@
 
       <p class="product-description">
         Our Body Oil is a sophisticated blend of lightweight, fast-absorbing botanical oils like Avocado, Jojoba, and
-        Almond. Formulated to provide deep hydration without any greasy residue, it leaves your skin velvety soft and
-        delicately scented.
-      </p>
-      <p class="product-description" style="margin-top: 14px;">
-        Rich in vitamins and antioxidants, it strengthens the skin's natural barrier and restores elasticity. Perfect
-        for post-shower application to lock in moisture.
+        Almond, enriched with therapeutic Lavender and Geranium essential oils. Formulated to provide deep hydration
+        without any greasy residue.
       </p>
 
       <div class="product-divider"></div>
@@ -97,7 +104,6 @@
         <p class="selector-label">Size</p>
         <div class="size-options">
           <button class="size-btn size-active">100ml</button>
-          <button class="size-btn">200ml <span class="size-note">Save 10%</span></button>
         </div>
       </div>
 
@@ -113,8 +119,7 @@
 
       <!-- CTA BUTTONS -->
       <div class="product-ctas">
-        <button class="btn-primary btn-full">Add to Cart</button>
-        <button class="btn-outline btn-full">Buy Now</button>
+        <button class="btn-primary btn-full add-to-cart-btn">Add to Cart</button>
       </div>
 
       <!-- MINI TRUST -->
@@ -144,31 +149,32 @@
         </div>
         <div class="ingredients-grid">
           <div class="ingredient-card">
-            <div class="ingredient-icon">🥑</div>
+            <div class="ingredient-icon">🪻</div>
             <div>
-              <div class="ingredient-name">Avocado Oil</div>
-              <div class="ingredient-benefit">Deeply penetrative oil rich in Vitamin E and Oleic acid.</div>
+              <div class="ingredient-name">Lavender & Geranium</div>
+              <div class="ingredient-benefit">Essential oils that soothe the skin and provide a delicate, natural
+                fragrance.</div>
             </div>
           </div>
           <div class="ingredient-card">
             <div class="ingredient-icon">🌰</div>
             <div>
-              <div class="ingredient-name">Almond Oil</div>
-              <div class="ingredient-benefit">Softens skin and improves complexion and skin tone.</div>
+              <div class="ingredient-name">Almond & Jojoba</div>
+              <div class="ingredient-benefit">Softens skin and provides long-lasting, deep hydration.</div>
             </div>
           </div>
           <div class="ingredient-card">
-            <div class="ingredient-icon">🌱</div>
+            <div class="ingredient-icon">🥑</div>
             <div>
-              <div class="ingredient-name">Jojoba Oil</div>
-              <div class="ingredient-benefit">Balances oil production and provide long-lasting hydration.</div>
+              <div class="ingredient-name">Avocado Oil</div>
+              <div class="ingredient-benefit">Rich in vitamins to strengthen the skin's natural barrier.</div>
             </div>
           </div>
         </div>
         <div class="full-inci">
           <p class="inci-label">Full INCI List</p>
           <p class="inci-text">Persea Gratissima (Avocado) Oil, Prunus Amygdalus Dulcis (Almond) Oil, Simmondsia
-            Chinensis (Jojoba) Seed Oil, Helianthus Annuus Seed Oil, Tocopherol</p>
+            Chinensis (Jojoba) Seed Oil, Lavandula Angustifolia Oil, Pelargonium Graveolens Oil, Tocopherol</p>
         </div>
       </div>
     </div>
@@ -178,42 +184,38 @@
         <div class="howto-intro">
           <span class="section-tag">✦ Application</span>
           <h2 class="section-title" style="text-align:left;">How to <em>Use</em></h2>
-          <p class="ingredients-intro">For best results, use morning and evening as part of your daily routine.</p>
+          <p class="ingredients-intro">For best results, apply after a warm bath while your skin is still damp.</p>
         </div>
         <div class="howto-steps">
           <div class="howto-step">
             <div class="step-num">01</div>
             <div class="step-content">
-              <div class="step-title">Cleanse</div>
-              <div class="step-text">Apply immediately after a shower or bath while skin is still slightly damp.</div>
+              <div class="step-title">Measure</div>
+              <div class="step-text">Dispense about 2 spoons of oil into your palms.</div>
             </div>
           </div>
           <div class="howto-step">
             <div class="step-num">02</div>
             <div class="step-content">
               <div class="step-title">Warm</div>
-              <div class="step-text">Dispense a small amount into palms and rub together to warm the oil.</div>
+              <div class="step-text">Rub your palms together to warm the oil for better absorption.</div>
             </div>
           </div>
           <div class="howto-step">
             <div class="step-num">03</div>
             <div class="step-content">
               <div class="step-title">Massage</div>
-              <div class="step-text">Massage into skin using long, firm strokes towards the heart.</div>
+              <div class="step-text">Massage into your skin using long, firm strokes towards the heart.</div>
             </div>
           </div>
           <div class="howto-step">
             <div class="step-num">04</div>
             <div class="step-content">
-              <div class="step-title">Absorb</div>
-              <div class="step-text">Allow a few minutes for the oil to absorb into the skin before dressing.</div>
+              <div class="step-title">Timing</div>
+              <div class="step-text">For best results, apply immediately after towel drying your body to lock in the
+                residual moisture.</div>
             </div>
           </div>
-        </div>
-        <div class="howto-tip">
-          <span>💡</span>
-          <p>Visible results typically appear after 4–6 weeks of consistent use. Store in a cool, dark place away from
-            direct sunlight.</p>
         </div>
       </div>
     </div>
@@ -223,30 +225,29 @@
         <div class="about-text-block">
           <span class="section-tag">✦ The Formula</span>
           <h2 class="section-title" style="text-align:left;">Crafted with<br><em>Intention</em></h2>
-          <p class="about-text">The Rose Radiance Serum was born from a simple question: why do brightening serums need
-            synthetic acids, artificial stabilisers, and preservatives that irritate sensitive skin?</p>
-          <p class="about-text">We spent 14 months sourcing and testing cold-pressed rosehip oils from small farms in
-            Chile and South Africa, finally settling on a blend that delivers consistent potency without refinement or
-            dilution.</p>
-          <p class="about-text">Every bottle is filled, sealed, and labelled by hand in our workshop in Delhi. Batch
-            numbers are printed on each bottle — you can trace exactly when and how your serum was made.</p>
+          <p class="about-text">This formula was born from the heritage of Indian skincare rituals, made inside a
+            private garden in Dehradun where nature meets handcrafted care.</p>
+          <p class="about-text">Every ingredient is sourced locally from India, ensuring we support local ecosystems
+            while delivering the freshest botanical potency to your skin.</p>
+          <p class="about-text">Every bottle is filled, sealed, and labelled by hand. You can feel the artisanal touch
+            and the purity of Dehradun's botanical wealth in every use.</p>
         </div>
         <div class="about-stats">
           <div class="about-stat">
-            <div class="stat-number">14</div>
-            <div class="stat-label">Months in<br>Development</div>
-          </div>
-          <div class="about-stat">
-            <div class="stat-number">8</div>
-            <div class="stat-label">Active<br>Botanicals</div>
-          </div>
-          <div class="about-stat">
-            <div class="stat-number">0</div>
-            <div class="stat-label">Synthetic<br>Ingredients</div>
+            <div class="stat-number">Dehradun</div>
+            <div class="stat-label">Handcrafted<br>Location</div>
           </div>
           <div class="about-stat">
             <div class="stat-number">100%</div>
-            <div class="stat-label">Cold-Pressed<br>Oils</div>
+            <div class="stat-label">Locally Sourced<br>from India</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Synthetic<br>Fragrances</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">Pure</div>
+            <div class="stat-label">Botanical<br>Wealth</div>
           </div>
         </div>
       </div>
@@ -291,14 +292,14 @@
       <h2 class="section-title">You May Also <em>Like</em></h2>
     </div>
     <div class="related-grid">
-      <a href="facial-mist.html" class="related-card">
-        <div class="related-img"><img src="images/facial-mist.jpg" alt="Facial Mist"
+      <a href="facial-oil.html" class="related-card">
+        <div class="related-img"><img src="images/facial-oil.jpg" alt="Facial Oil"
             style="width:100%; height:100%; object-fit:cover;"></div>
         <div class="related-info">
-          <div class="product-name">Facial Mist</div>
-          <div class="product-desc">Pure rose water hydration</div>
+          <div class="product-name">Facial Oil</div>
+          <div class="product-desc">Premium skin rejuvenation</div>
           <div class="related-footer">
-            <span class="product-price"><span class="currency">₹</span>255</span>
+            <span class="product-price"><span class="currency">₹</span>1,000</span>
             <button class="add-to-cart">Add to Cart</button>
           </div>
         </div>
@@ -315,14 +316,14 @@
           </div>
         </div>
       </a>
-      <a href="body-oil.html" class="related-card">
-        <div class="related-img"><img src="images/body-oil.jpg" alt="Body Oil"
+      <a href="body-polisher.html" class="related-card">
+        <div class="related-img"><img src="images/body-polish.jpg" alt="Body Polisher"
             style="width:100%; height:100%; object-fit:cover;"></div>
         <div class="related-info">
-          <div class="product-name">Body Oil</div>
-          <div class="product-desc">Lightweight Ayurvedic hydration</div>
+          <div class="product-name">Body Polisher</div>
+          <div class="product-desc">Traditional exfoliating scrub</div>
           <div class="related-footer">
-            <span class="product-price"><span class="currency">₹</span>650</span>
+            <span class="product-price"><span class="currency">₹</span>400</span>
             <button class="add-to-cart">Add to Cart</button>
           </div>
         </div>
@@ -349,13 +350,17 @@
       <ul class="footer-links">
         <li><a href="index.html#about">About Us</a></li>
         <li><a href="quiz.html">Book Consultation</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Shipping & Returns</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="faq.html#returns">Shipping & Returns</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </footer>
-  <div class="footer-bottom">&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+  <div class="footer-bottom">
+    <div>&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+    <div style="margin-top: 8px;"><a href="privacy-terms.html"
+        style="color: inherit; text-decoration: none; font-size: 0.8rem; opacity: 0.7;">Privacy Policy & Terms</a></div>
+  </div>
 
   <script>
     function changeQty(delta) {

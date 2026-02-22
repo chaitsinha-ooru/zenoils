@@ -33,8 +33,27 @@
         <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
       </a>
       <button class="nav-cta" onclick="window.location.href='index.html#products'">Shop Now</button>
+      <button class="mobile-menu-btn"
+        style="display: none; background: none; border: none; cursor: pointer; padding: 8px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
     </div>
   </nav>
+
+  <div class="mobile-menu-overlay">
+    <button class="mobile-menu-close">&times;</button>
+    <ul class="mobile-menu-links">
+      <li><a href="skincare.html">Skin Care</a></li>
+      <li><a href="haircare.html">Hair & Wellness</a></li>
+      <li><a href="index.html#about">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
 
   <!-- BREADCRUMB -->
   <div class="breadcrumb">
@@ -57,9 +76,6 @@
       </div>
       <div class="product-thumbs">
         <div class="thumb thumb-active"><img src="images/body-polish.jpg" alt="Thumb 1"></div>
-        <div class="thumb"><img src="images/body-oil.jpg" alt="Thumb 2"></div>
-        <div class="thumb"><img src="images/body-polish.jpg" alt="Thumb 3"></div>
-        <div class="thumb"><img src="images/lip-balm.jpg" alt="Thumb 4"></div>
       </div>
     </div>
 
@@ -67,11 +83,6 @@
       <p class="product-collection-tag">✦ Skin Care Collection</p>
       <h1 class="product-title">Body<br><em>Polisher</em></h1>
       <p class="product-subtitle">Healing Clay & Turmeric Scrub</p>
-
-      <div class="product-rating">
-        <span class="stars">★★★★★</span>
-        <span class="rating-count">4.7 (114 reviews)</span>
-      </div>
 
       <div class="product-price-block">
         <span class="price-main"><span class="currency">₹</span>400</span>
@@ -82,7 +93,7 @@
 
       <p class="product-description">
         Reclaim your skin's natural glow with our Body Polisher. A potent blend of healing clays, turmeric, and
-        essential oils designed to detoxify, exfoliate, and deeply moisturize the entire body.
+        camphor designed to detoxify, exfoliate, and deeply moisturize the entire body.
       </p>
       <p class="product-description" style="margin-top: 14px;">
         This traditional Ayurvedic formula stimulates blood circulation and aids in the removal of tan and toxins,
@@ -96,7 +107,6 @@
         <p class="selector-label">Size</p>
         <div class="size-options">
           <button class="size-btn size-active">200g</button>
-          <button class="size-btn">500g <span class="size-note">Save 20%</span></button>
         </div>
       </div>
 
@@ -112,8 +122,7 @@
 
       <!-- CTA BUTTONS -->
       <div class="product-ctas">
-        <button class="btn-primary btn-full">Add to Cart</button>
-        <button class="btn-outline btn-full">Buy Now</button>
+        <button class="btn-primary btn-full add-to-cart-btn">Add to Cart</button>
       </div>
 
       <!-- MINI TRUST -->
@@ -157,17 +166,18 @@
             </div>
           </div>
           <div class="ingredient-card">
-            <div class="ingredient-icon">🥥</div>
+            <div class="ingredient-icon">❄️</div>
             <div>
-              <div class="ingredient-name">Coconut Oil</div>
-              <div class="ingredient-benefit">Rich hydration that leaves skin soft and supple after exfoliation.</div>
+              <div class="ingredient-name">Camphor</div>
+              <div class="ingredient-benefit">Cooling and soothing agent that helps relieve skin irritation and
+                inflammation.</div>
             </div>
           </div>
         </div>
         <div class="full-inci">
           <p class="inci-label">Full INCI List</p>
           <p class="inci-text">Fuller's Earth (Multani Mitti), Kaolin Clay, Curcuma Longa Root Powder, Cocos Nucifera
-            Oil, Sea Salt, Essential Oil Blend</p>
+            Oil, Sea Salt, Camphor</p>
         </div>
       </div>
     </div>
@@ -177,45 +187,40 @@
         <div class="howto-intro">
           <span class="section-tag">✦ Application</span>
           <h2 class="section-title" style="text-align:left;">How to <em>Use</em></h2>
-          <p class="ingredients-intro">For best results, use morning and evening as part of your daily routine.</p>
+          <p class="ingredients-intro">For best results, follow this traditional bathing ritual.</p>
         </div>
         <div class="howto-steps">
           <div class="howto-step">
             <div class="step-num">01</div>
             <div class="step-content">
-              <div class="step-title">Dampen</div>
-              <div class="step-text">Begin your shower or bath and allow your skin to dampen with warm water for better
-                exfoliation.</div>
+              <div class="step-title">Prepare</div>
+              <div class="step-text">First take a tablespoon of body polish and mix it with water or curd in a bowl to
+                form a smooth paste.</div>
             </div>
           </div>
           <div class="howto-step">
             <div class="step-num">02</div>
             <div class="step-content">
-              <div class="step-title">Massge</div>
-              <div class="step-text">Take a generous amount of polisher and massage into skin using circular motions,
-                starting from feet upwards.</div>
+              <div class="step-title">Apply</div>
+              <div class="step-text">Apply the mixture all over your wet skin while in the shower or bath.</div>
             </div>
           </div>
           <div class="howto-step">
             <div class="step-num">03</div>
             <div class="step-content">
-              <div class="step-title">Focus</div>
-              <div class="step-text">Spend extra time on rough areas like elbows, knees, and heels.</div>
+              <div class="step-title">Massage</div>
+              <div class="step-text">Rub gently into the skin for about 10 seconds. Focus on areas that need extra
+                exfoliation.</div>
             </div>
           </div>
           <div class="howto-step">
             <div class="step-num">04</div>
             <div class="step-content">
-              <div class="step-title">Rinse</div>
-              <div class="step-text">Rinse with warm water. No soap is needed afterwards as the natural oils will stay
-                to nourish the skin.</div>
+              <div class="step-title">Rinse & Nourish</div>
+              <div class="step-text">Take a bath and rinse off thoroughly. For best results, apply our Body Oil after
+                towel drying while your skin is still receptive.</div>
             </div>
           </div>
-        </div>
-        <div class="howto-tip">
-          <span>💡</span>
-          <p>Visible results typically appear after 4–6 weeks of consistent use. Store in a cool, dark place away from
-            direct sunlight.</p>
         </div>
       </div>
     </div>
@@ -225,30 +230,29 @@
         <div class="about-text-block">
           <span class="section-tag">✦ The Formula</span>
           <h2 class="section-title" style="text-align:left;">Crafted with<br><em>Intention</em></h2>
-          <p class="about-text">The Rose Radiance Serum was born from a simple question: why do brightening serums need
-            synthetic acids, artificial stabilisers, and preservatives that irritate sensitive skin?</p>
-          <p class="about-text">We spent 14 months sourcing and testing cold-pressed rosehip oils from small farms in
-            Chile and South Africa, finally settling on a blend that delivers consistent potency without refinement or
-            dilution.</p>
-          <p class="about-text">Every bottle is filled, sealed, and labelled by hand in our workshop in Delhi. Batch
-            numbers are printed on each bottle — you can trace exactly when and how your serum was made.</p>
+          <p class="about-text">This formula was born from the heritage of Indian skincare rituals, made inside a
+            private garden in Dehradun where nature meets handcrafted care.</p>
+          <p class="about-text">Every ingredient is sourced locally from India, ensuring we support local ecosystems
+            while delivering the freshest botanical potency to your skin.</p>
+          <p class="about-text">Every bottle is filled, sealed, and labelled by hand. You can feel the artisanal touch
+            and the purity of Dehradun's botanical wealth in every use.</p>
         </div>
         <div class="about-stats">
           <div class="about-stat">
-            <div class="stat-number">14</div>
-            <div class="stat-label">Months in<br>Development</div>
-          </div>
-          <div class="about-stat">
-            <div class="stat-number">8</div>
-            <div class="stat-label">Active<br>Botanicals</div>
-          </div>
-          <div class="about-stat">
-            <div class="stat-number">0</div>
-            <div class="stat-label">Synthetic<br>Ingredients</div>
+            <div class="stat-number">Dehradun</div>
+            <div class="stat-label">Handcrafted<br>Location</div>
           </div>
           <div class="about-stat">
             <div class="stat-number">100%</div>
-            <div class="stat-label">Cold-Pressed<br>Oils</div>
+            <div class="stat-label">Locally Sourced<br>from India</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Synthetic<br>Fragrances</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">Pure</div>
+            <div class="stat-label">Botanical<br>Wealth</div>
           </div>
         </div>
       </div>
@@ -351,13 +355,17 @@
       <ul class="footer-links">
         <li><a href="index.html#about">About Us</a></li>
         <li><a href="quiz.html">Book Consultation</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Shipping & Returns</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="faq.html#returns">Shipping & Returns</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </footer>
-  <div class="footer-bottom">&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+  <div class="footer-bottom">
+    <div>&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+    <div style="margin-top: 8px;"><a href="privacy-terms.html"
+        style="color: inherit; text-decoration: none; font-size: 0.8rem; opacity: 0.7;">Privacy Policy & Terms</a></div>
+  </div>
 
   <script>
     function changeQty(delta) {

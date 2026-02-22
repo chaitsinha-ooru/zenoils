@@ -11,15 +11,15 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         .cart-hero {
-            padding: 160px 60px 80px;
+            padding: 120px 60px 40px;
             background: var(--warm-white);
             text-align: center;
         }
 
         .cart-container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 60px;
+            padding: 40px 60px 80px;
         }
 
         /* Checkout Form Styles */
@@ -136,6 +136,35 @@
             text-transform: uppercase;
             cursor: pointer;
         }
+
+        @media (max-width: 992px) {
+            .cart-hero {
+                padding: 100px 30px 30px;
+            }
+
+            .cart-container {
+                padding: 30px 20px 60px;
+            }
+
+            #cart-view {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+
+            .cart-item {
+                grid-template-columns: 80px 1fr auto !important;
+                gap: 15px !important;
+            }
+
+            .cart-item img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .checkout-view {
+                padding: 30px !important;
+            }
+        }
     </style>
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -154,16 +183,38 @@
             <li><a href="haircare.html">Hair & Wellness</a></li>
             <li><a href="index.html#about">About</a></li>
         </ul>
-        <a href="cart.html" style="position: relative; color: var(--bark);">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="9" cy="21" r="1" />
-                <circle cx="20" cy="21" r="1" />
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-            </svg>
-            <span id="cart-badge" class="cart-badge">0</span>
-        </a>
+        <div style="display: flex; align-items: center; gap: 24px;">
+            <a href="cart.html" style="position: relative; color: var(--bark); display: flex; align-items: center;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
+                <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
+            </a>
+            <button class="nav-cta" onclick="window.location.href='index.html#products'">Shop Now</button>
+            <button class="mobile-menu-btn"
+                style="display: none; background: none; border: none; cursor: pointer; padding: 8px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
     </nav>
+
+    <div class="mobile-menu-overlay">
+        <button class="mobile-menu-close">&times;</button>
+        <ul class="mobile-menu-links">
+            <li><a href="skincare.html">Skin Care</a></li>
+            <li><a href="haircare.html">Hair & Wellness</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
 
     <header class="cart-hero">
         <h1 class="category-title" id="page-title">Your <em>Cart</em></h1>
@@ -179,10 +230,14 @@
         </div>
 
         <!-- Step 2: Checkout View -->
-        <div id="checkout-view" class="checkout-view">
-            <div class="checkout-header" onclick="showCart()"><span>&larr; Back to Cart</span></div>
+        <div id="checkout-view" class="checkout-view"
+            style="max-width: 700px; background: white; padding: 60px; box-shadow: 0 10px 40px rgba(0,0,0,0.05);">
+            <div class="checkout-header" onclick="showCart()" style="margin-bottom: 30px;"><span>&larr; Back to
+                    Cart</span></div>
             <form id="shipping-form">
-                <h2 class="summary-title" style="text-align: left; margin-bottom: 30px;">Shipping Details</h2>
+                <h2 class="summary-title" style="text-align: center; margin-bottom: 40px; font-size: 2rem;">Shipping
+                    <em>Details</em>
+                </h2>
                 <div class="form-group"><label>Full Name</label><input type="text" id="cust-name" required></div>
                 <div class="form-group"><label>Email Address</label><input type="email" id="cust-email" required></div>
                 <div class="form-group"><label>Phone Number</label><input type="tel" id="cust-phone"
@@ -193,6 +248,14 @@
                     <div class="form-group"><label>City</label><input type="text" id="cust-city" required></div>
                     <div class="form-group"><label>Pincode</label><input type="text" id="cust-pincode"
                             placeholder="6-digit India Pincode" maxlength="6" required></div>
+                </div>
+                <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px; margin-top: 20px;">
+                    <input type="checkbox" id="terms-check" style="width: auto; margin-top: 4px;" required>
+                    <label for="terms-check"
+                        style="text-transform: none; font-size: 13px; letter-spacing: 0; color: var(--bark);">I agree to
+                        the <a href="#" style="color: var(--bark); text-decoration: underline;">Terms & Conditions</a>
+                        and <a href="#" style="color: var(--bark); text-decoration: underline;">Privacy
+                            Policy</a>.</label>
                 </div>
                 <button type="submit" class="btn-upi">Continue to Payment</button>
             </form>
@@ -232,16 +295,27 @@
             <ul class="footer-links">
                 <li><a href="index.html#about">About Us</a></li>
                 <li><a href="quiz.html">Book Consultation</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Shipping & Returns</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="faq.html#returns">Shipping & Returns</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </footer>
-    <div class="footer-bottom">&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+    <div class="footer-bottom">
+        <div>&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+        <div style="margin-top: 8px;"><a href="privacy-terms.html"
+                style="color: inherit; text-decoration: none; font-size: 0.8rem; opacity: 0.7;">Privacy Policy &
+                Terms</a></div>
+    </div>
 
+    <!-- Razorpay SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="cart.js"></script>
     <script>
+        // --- RAZORPAY CONFIGURATION ---
+        const RAZORPAY_KEY_ID = "rzp_live_SJ7G9QiWUq6ivM";
+        // ------------------------------
+
         let currentAmount = 0;
         function renderCart() {
             const list = document.getElementById('items-list');
@@ -287,65 +361,170 @@
             window.scrollTo(0, 0);
         }
 
-        document.getElementById('shipping-form').addEventListener('submit', (e) => {
+        document.getElementById('shipping-form').addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Basic Validity Checks
+            const name = document.getElementById('cust-name').value;
+            const email = document.getElementById('cust-email').value;
             const phone = document.getElementById('cust-phone').value;
+            const address = document.getElementById('cust-address').value;
+            const city = document.getElementById('cust-city').value;
             const pincode = document.getElementById('cust-pincode').value;
 
-            // Phone validation: 10 digits + optional international code
-            // Supporting formats: +91 9876543210, 9876543210, +1-9876543210 etc.
+            // Basic Validation
             const phoneRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
             if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
-                alert("Please enter a valid 10-digit phone number. International codes (e.g., +91) are allowed.");
+                alert("Please enter a valid 10-digit phone number.");
                 return;
             }
-
-            // India Pincode validation: Exactly 6 digits, starting with 1-9
             if (!/^[1-9][0-9]{5}$/.test(pincode)) {
-                alert("Please enter a valid 6-digit Indian Pincode (starts with 1-9).");
+                alert("Please enter a valid 6-digit Indian Pincode.");
                 return;
             }
 
-            const upiUrl = `upi://pay?pa=vijaylaxmi.sinha@okhdfcbank&pn=Zen%20Oils%20India&am=${currentAmount}&cu=INR`;
-            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                window.location.href = upiUrl;
-            } else {
-                const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiUrl)}`;
-                document.getElementById('upi-qr-container').innerHTML = `<img src="${qrUrl}">`;
-                document.getElementById('upi-amount-display').textContent = `Total Amount: ₹${currentAmount.toLocaleString()}`;
-                document.getElementById('upi-modal').style.display = 'flex';
+            const submitBtn = document.querySelector('#shipping-form button');
+            submitBtn.textContent = "Initiating Secure Payment...";
+            submitBtn.disabled = true;
+
+            try {
+                // 1. Create Order via Netlify Function
+                const response = await fetch('/.netlify/functions/create-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amount: currentAmount,
+                        receipt: 'zen_order_' + Date.now(),
+                        notes: {
+                            customer_name: name,
+                            address: `${address}, ${city} - ${pincode}`
+                        }
+                    })
+                });
+
+                if (!response.ok) throw new Error('Could not create order');
+                const orderData = await response.json();
+
+                // 2. Razorpay Options with Official Order ID
+                const options = {
+                    "key": RAZORPAY_KEY_ID,
+                    "amount": orderData.amount,
+                    "currency": "INR",
+                    "name": "Zen Oils",
+                    "description": "Premium Handcrafted Oils",
+                    "image": "images/logo.png",
+                    "order_id": orderData.id,
+                    "handler": function (response) {
+                        // Capture all success details
+                        handlePaymentCompletion(
+                            response.razorpay_payment_id,
+                            response.razorpay_order_id,
+                            response.razorpay_signature
+                        );
+                    },
+                    "prefill": {
+                        "name": name,
+                        "email": email,
+                        "contact": phone
+                    },
+                    "notes": {
+                        "address": `${address}, ${city} - ${pincode}`
+                    },
+                    "theme": {
+                        "color": "#4A3728"
+                    },
+                    "modal": {
+                        "ondismiss": function () {
+                            submitBtn.textContent = "Continue to Payment";
+                            submitBtn.disabled = false;
+                        }
+                    }
+                };
+
+                const rzp1 = new Razorpay(options);
+
+                // Detailed Error Handling
+                rzp1.on('payment.failed', function (response) {
+                    console.error("Payment Error:", response.error);
+                    alert("Payment Failed: " + response.error.description);
+                    submitBtn.textContent = "Continue to Payment";
+                    submitBtn.disabled = false;
+                });
+
+                rzp1.open();
+
+            } catch (err) {
+                console.error(err);
+                alert("Payment Initialization Failed: " + err.message);
+                submitBtn.textContent = "Continue to Payment";
+                submitBtn.disabled = false;
             }
         });
 
-        function handlePaymentCompletion() {
-            const orderId = 'ZO-' + Math.floor(100000 + Math.random() * 900000);
-            const data = {
-                order_id: orderId,
-                to_name: document.getElementById('cust-name').value,
-                to_email: document.getElementById('cust-email').value,
-                phone: document.getElementById('cust-phone').value,
-                address: `${document.getElementById('cust-address').value}, ${document.getElementById('cust-city').value} - ${document.getElementById('cust-pincode').value}`,
-                items: cart.map(i => `${i.name} x${i.quantity}`).join(', '),
-                total: currentAmount.toLocaleString('en-IN')
-            };
+        async function handlePaymentCompletion(paymentId, razorpayOrderId, signature) {
+            const submitBtn = document.querySelector('#shipping-form button');
+            submitBtn.textContent = "Verifying Payment...";
 
-            emailjs.send("service_d9tjw2s", "8r8cqtq", data).then(() => {
-                alert(`Order ${orderId} Placed! A confirmation email has been sent to ${data.to_email}`);
-                localStorage.removeItem('zenoils_cart');
-                window.location.href = "index.html";
-            }, (err) => {
+            try {
+                // 1. Verify Payment on Backend
+                const verifyResponse = await fetch('/.netlify/functions/verify-payment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        razorpay_order_id: razorpayOrderId,
+                        razorpay_payment_id: paymentId,
+                        razorpay_signature: signature
+                    })
+                });
+
+                const result = await verifyResponse.json();
+
+                if (result.status !== 'verified') {
+                    throw new Error("Payment verification failed. Please contact support.");
+                }
+
+                // 2. Prepare Email Data
+                const data = {
+                    order_id: razorpayOrderId,
+                    payment_id: paymentId,
+                    razorpay_signature: signature,
+                    to_name: document.getElementById('cust-name').value,
+                    to_email: document.getElementById('cust-email').value,
+                    phone: document.getElementById('cust-phone').value,
+                    address: `${document.getElementById('cust-address').value}, ${document.getElementById('cust-city').value} - ${document.getElementById('cust-pincode').value}`,
+                    items: cart.map(i => `${i.name} x${i.quantity}`).join(', '),
+                    total: currentAmount.toLocaleString('en-IN')
+                };
+
+                submitBtn.textContent = "Finalizing Order...";
+
+                // 3. Send Confirmation Email
+                emailjs.send("service_d9tjw2s", "8r8cqtq", data).then(() => {
+                    alert(`Order Success! Order ID: ${razorpayOrderId}. Confirmation sent to ${data.to_email}`);
+                    localStorage.removeItem('zenoils_cart');
+                    window.location.href = "index.html";
+                }, (err) => {
+                    console.error(err);
+                    alert(`Payment Successful, but email notification failed. Your Payment ID is ${paymentId}.`);
+                    localStorage.removeItem('zenoils_cart');
+                    window.location.href = "index.html";
+                });
+
+            } catch (err) {
                 console.error(err);
-                alert(`Order ${orderId} Placed! (Connect EmailJS to send the receipt automatically)`);
-                localStorage.removeItem('zenoils_cart');
-                window.location.href = "index.html";
-            });
+                alert("Verification Error: " + err.message);
+                submitBtn.textContent = "Continue to Payment";
+                submitBtn.disabled = false;
+            }
         }
 
-        function closeUPIModal() { document.getElementById('upi-modal').style.display = 'none'; }
         function changeQty(i, d) { cart[i].quantity += d; if (cart[i].quantity < 1) cart.splice(i, 1); saveCart(); renderCart(); updateCartBadge(); }
-        document.addEventListener('DOMContentLoaded', renderCart);
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCart();
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('checkout') === 'true' && cart.length > 0) {
+                showCheckout();
+            }
+        });
     </script>
 </body>
 

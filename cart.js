@@ -10,19 +10,19 @@ function updateCartBadge() {
     }
 }
 
-function addToCart(name, price, image) {
+function addToCart(name, price, image, quantity = 1) {
     // Price comes in as "₹1,000" or similar, convert to number
-    const numericPrice = parseInt(price.replace(/[^0-9]/g, ''));
+    const numericPrice = typeof price === 'number' ? price : parseInt(price.replace(/[^0-9]/g, ''));
 
     const existingItem = cart.find(item => item.name === name);
     if (existingItem) {
-        existingItem.quantity += 1;
+        existingItem.quantity += quantity;
     } else {
         cart.push({
             name,
             price: numericPrice,
             image,
-            quantity: 1
+            quantity: quantity
         });
     }
 
@@ -30,7 +30,7 @@ function addToCart(name, price, image) {
     updateCartBadge();
 
     // Show a small notification
-    showToast(`${name} added to cart`);
+    showToast(`${name} ${quantity > 1 ? `(${quantity}) ` : ''}added to cart`);
 }
 
 function saveCart() {
@@ -56,27 +56,64 @@ function showToast(message) {
 document.addEventListener('DOMContentLoaded', () => {
     updateCartBadge();
 
-    // Attach listeners to "Add to Cart" buttons
-    document.querySelectorAll('.add-to-cart, .add-to-cart-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent card click
-            e.preventDefault();
+    // Attach listeners to "Add to Cart" and "Buy Now" buttons
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.add-to-cart, .add-to-cart-btn, .product-ctas button');
+        if (!btn) return;
 
-            const card = btn.closest('.product-card, .product-info-panel, .related-card');
-            let name, price, img;
+        e.stopPropagation();
+        e.preventDefault();
 
-            if (card.classList.contains('product-card') || card.classList.contains('related-card')) {
-                name = card.querySelector('.product-name').textContent;
-                price = card.querySelector('.product-price').textContent;
-                img = card.querySelector('img').src;
-            } else {
-                // Product detail page
-                name = card.querySelector('.product-title').textContent.replace('<br>', '').replace('<em>', '').replace('</em>', '');
-                price = card.querySelector('.price-main').textContent;
-                img = document.querySelector('.product-main-visual img')?.src || '';
-            }
+        const card = btn.closest('.product-card, .product-info-panel, .related-card');
+        if (!card) return;
 
-            addToCart(name, price, img);
-        });
+        let name, price, img;
+
+        if (card.classList.contains('product-card') || card.classList.contains('related-card')) {
+            name = card.querySelector('.product-name').textContent;
+            price = card.querySelector('.product-price').textContent;
+            img = card.querySelector('img').src;
+        } else {
+            // Product detail page
+            name = card.querySelector('.product-title').textContent.replace(/<br>/g, ' ').replace(/<[^>]*>?/gm, '').trim();
+            price = card.querySelector('.price-main').textContent;
+            img = document.querySelector('.product-main-visual img')?.src || '';
+        }
+
+        const isBuyNow = btn.textContent.toLowerCase().includes('buy now');
+
+        // On detail pages, we might have a quantity selector
+        const qtyEl = document.getElementById('qty');
+        const quantity = qtyEl ? parseInt(qtyEl.textContent) : 1;
+
+        addToCart(name, price, img, quantity);
+
+        if (isBuyNow) {
+            window.location.href = 'cart.html?checkout=true';
+        }
     });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+
+    if (mobileMenuBtn && mobileMenuOverlay) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const closeMenu = () => {
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMenu);
+
+        // Close when clicking a link
+        mobileMenuOverlay.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    }
 });

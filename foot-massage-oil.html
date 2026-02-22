@@ -33,8 +33,27 @@
         <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
       </a>
       <button class="nav-cta" onclick="window.location.href='index.html#products'">Shop Now</button>
+      <button class="mobile-menu-btn"
+        style="display: none; background: none; border: none; cursor: pointer; padding: 8px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
     </div>
   </nav>
+
+  <div class="mobile-menu-overlay">
+    <button class="mobile-menu-close">&times;</button>
+    <ul class="mobile-menu-links">
+      <li><a href="skincare.html">Skin Care</a></li>
+      <li><a href="haircare.html">Hair & Wellness</a></li>
+      <li><a href="index.html#about">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
 
   <!-- BREADCRUMB -->
   <div class="breadcrumb">
@@ -57,17 +76,14 @@
         <span class="product-hero-badge">Bestseller</span>
       </div>
       <div class="product-thumbs">
-        <div class="thumb thumb-active"><img src="images/foot-massage-oil.jpg" alt="Thumb 1"></div>
-        <div class="thumb"><img src="images/pain-relief-oil.jpg" alt="Thumb 2"></div>
-        <div class="thumb"><img src="images/body-polish.jpg" alt="Thumb 3"></div>
-        <div class="thumb"><img src="images/lip-balm.jpg" alt="Thumb 4"></div>
+        <div class="thumb thumb-active"><img src="images/foot-oil.jpg" alt="Thumb 1"></div>
       </div>
     </div>
 
     <div class="product-info-panel">
       <p class="product-collection-tag">✦ Hair & Wellness Collection</p>
       <h1 class="product-title">Foot Massage<br><em>Oil</em></h1>
-      <p class="product-subtitle">Relaxing Lavender & Peppermint Therapy</p>
+      <p class="product-subtitle">Revitalizing Relief for Tired Feet</p>
 
       <div class="product-rating">
         <span class="stars">★★★★★</span>
@@ -82,8 +98,9 @@
       <div class="product-divider"></div>
 
       <p class="product-description">
-        Treat your tired feet to the ultimate relaxation with our Foot Massage Oil. Expertly blended with cooling
-        Peppermint and calming Lavender, it relieves soreness, softens tough skin, and promotes a restful night's sleep.
+        Soothe your weary feet with our Foot Massage Oil. A deeply penetrative blend of cold-pressed oils
+        enriched with cooling Peppermint and warming Clove to relieve pain, improve circulation, and
+        soften rough skin.
       </p>
       <p class="product-description" style="margin-top: 14px;">
         Inspired by traditional reflexology practices, this oil helps balance the body's energy while providing intense
@@ -96,8 +113,7 @@
       <div class="selector-group">
         <p class="selector-label">Size</p>
         <div class="size-options">
-          <button class="size-btn size-active">30ml</button>
-          <button class="size-btn">50ml <span class="size-note">Save 10%</span></button>
+          <button class="size-btn size-active">100ml</button>
         </div>
       </div>
 
@@ -113,8 +129,7 @@
 
       <!-- CTA BUTTONS -->
       <div class="product-ctas">
-        <button class="btn-primary btn-full">Add to Cart</button>
-        <button class="btn-outline btn-full">Buy Now</button>
+        <button class="btn-primary btn-full add-to-cart-btn">Add to Cart</button>
       </div>
 
       <!-- MINI TRUST -->
@@ -139,36 +154,37 @@
         <div class="ingredients-hero-text">
           <span class="section-tag">✦ What's Inside</span>
           <h2 class="section-title" style="text-align:left;">Pure. <em>Honest.</em><br>Ingredients.</h2>
-          <p class="ingredients-intro">Every ingredient is chosen with purpose. We use only what your skin needs —
+          <p class="ingredients-intro">Every ingredient is chosen with purpose. We use only what your body needs —
             nothing more.</p>
         </div>
         <div class="ingredients-grid">
           <div class="ingredient-card">
-            <div class="ingredient-icon">🪻</div>
-            <div>
-              <div class="ingredient-name">Lavender Oil</div>
-              <div class="ingredient-benefit">Known for its ability to relax the mind and soothe skin irritations.</div>
-            </div>
-          </div>
-          <div class="ingredient-card">
-            <div class="ingredient-icon">🍃</div>
+            <div class="ingredient-icon">🌿</div>
             <div>
               <div class="ingredient-name">Peppermint Oil</div>
-              <div class="ingredient-benefit">Provides a cooling, tingling sensation that relieves foot fatigue.</div>
+              <div class="ingredient-benefit">Cooling sensation that relieves aches and refreshes tired feet.</div>
             </div>
           </div>
           <div class="ingredient-card">
-            <div class="ingredient-icon">🌰</div>
+            <div class="ingredient-icon">🦴</div>
             <div>
-              <div class="ingredient-name">Sesame Oil</div>
-              <div class="ingredient-benefit">A warming base oil that penetrates deep into the tissues.</div>
+              <div class="ingredient-name">Clove Oil</div>
+              <div class="ingredient-benefit">Natural warming agent that aids in pain relief and improves circulation.
+              </div>
+            </div>
+          </div>
+          <div class="ingredient-card">
+            <div class="ingredient-icon">🥥</div>
+            <div>
+              <div class="ingredient-name">Sesame & Castor Oil</div>
+              <div class="ingredient-benefit">Heavy-duty moisturizers that repair cracked heels and dry patches.</div>
             </div>
           </div>
         </div>
         <div class="full-inci">
           <p class="inci-label">Full INCI List</p>
-          <p class="inci-text">Sesamum Indicum Seed Oil, Lavandula Angustifolia Oil, Mentha Piperita Oil, Melaleuca
-            Alternifolia Leaf Oil, Tocopherol</p>
+          <p class="inci-text">Sesamum Indicum (Sesame) Seed Oil, Ricinus Communis (Castor) Seed Oil, Mentha Piperita
+            (Peppermint) Oil, Eugenia Caryophyllus (Clove) Oil</p>
         </div>
       </div>
     </div>
@@ -178,38 +194,37 @@
         <div class="howto-intro">
           <span class="section-tag">✦ Application</span>
           <h2 class="section-title" style="text-align:left;">How to <em>Use</em></h2>
-          <p class="ingredients-intro">For best results, use morning and evening as part of your daily routine.</p>
+          <p class="ingredients-intro">The best way to end your day is with a soothing foot massage.</p>
         </div>
         <div class="howto-steps">
           <div class="howto-step">
             <div class="step-num">01</div>
             <div class="step-content">
               <div class="step-title">Cleanse</div>
-              <div class="step-text">Wash your feet with warm water and pat dry before application.</div>
+              <div class="step-text">Wash your feet with warm water and pat dry.</div>
             </div>
           </div>
           <div class="howto-step">
             <div class="step-num">02</div>
             <div class="step-content">
               <div class="step-title">Massage</div>
-              <div class="step-text">Apply a generous amount of oil and massage each foot for 5–10 minutes, focusing on
-                the soles and heels.</div>
+              <div class="step-text">Apply a generous amount of oil and massage firmly into soles, heels, and between
+                toes for 5-10 minutes.</div>
             </div>
           </div>
           <div class="howto-step">
             <div class="step-num">03</div>
             <div class="step-content">
-              <div class="step-title">Reflexology</div>
-              <div class="step-text">Apply firm pressure to the arch of the foot to help release tension throughout the
-                body.</div>
+              <div class="step-title">Bedtime</div>
+              <div class="step-text">Apply before going to bed. Wear cotton socks after massage to lock in the oil and
+                prevent slipping.</div>
             </div>
           </div>
           <div class="howto-step">
             <div class="step-num">04</div>
             <div class="step-content">
-              <div class="step-title">Protect</div>
-              <div class="step-text">Put on a pair of clean cotton socks after massage to lock in the moisture and
-                prevent slipping.</div>
+              <div class="step-title">Repeat</div>
+              <div class="step-text">Use nightly for exceptionally soft feet and improved sleep quality.</div>
             </div>
           </div>
         </div>
@@ -226,30 +241,29 @@
         <div class="about-text-block">
           <span class="section-tag">✦ The Formula</span>
           <h2 class="section-title" style="text-align:left;">Crafted with<br><em>Intention</em></h2>
-          <p class="about-text">The Rose Radiance Serum was born from a simple question: why do brightening serums need
-            synthetic acids, artificial stabilisers, and preservatives that irritate sensitive skin?</p>
-          <p class="about-text">We spent 14 months sourcing and testing cold-pressed rosehip oils from small farms in
-            Chile and South Africa, finally settling on a blend that delivers consistent potency without refinement or
-            dilution.</p>
-          <p class="about-text">Every bottle is filled, sealed, and labelled by hand in our workshop in Delhi. Batch
-            numbers are printed on each bottle — you can trace exactly when and how your serum was made.</p>
+          <p class="about-text">This formula was born from the heritage of Indian skincare rituals, made inside a
+            private garden in Dehradun where nature meets handcrafted care.</p>
+          <p class="about-text">Every ingredient is sourced locally from India, ensuring we support local ecosystems
+            while delivering the freshest botanical potency to your body.</p>
+          <p class="about-text">Every bottle is filled, sealed, and labelled by hand. You can feel the artisanal touch
+            and the purity of Dehradun's botanical wealth in every use.</p>
         </div>
         <div class="about-stats">
           <div class="about-stat">
-            <div class="stat-number">14</div>
-            <div class="stat-label">Months in<br>Development</div>
-          </div>
-          <div class="about-stat">
-            <div class="stat-number">8</div>
-            <div class="stat-label">Active<br>Botanicals</div>
-          </div>
-          <div class="about-stat">
-            <div class="stat-number">0</div>
-            <div class="stat-label">Synthetic<br>Ingredients</div>
+            <div class="stat-number">Dehradun</div>
+            <div class="stat-label">Handcrafted<br>Location</div>
           </div>
           <div class="about-stat">
             <div class="stat-number">100%</div>
-            <div class="stat-label">Cold-Pressed<br>Oils</div>
+            <div class="stat-label">Locally Sourced<br>from India</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Synthetic<br>Fragrances</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-number">Pure</div>
+            <div class="stat-label">Soothing<br>Relief</div>
           </div>
         </div>
       </div>
@@ -352,13 +366,17 @@
       <ul class="footer-links">
         <li><a href="index.html#about">About Us</a></li>
         <li><a href="quiz.html">Book Consultation</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Shipping & Returns</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="faq.html#returns">Shipping & Returns</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </footer>
-  <div class="footer-bottom">&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+  <div class="footer-bottom">
+    <div>&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+    <div style="margin-top: 8px;"><a href="privacy-terms.html"
+        style="color: inherit; text-decoration: none; font-size: 0.8rem; opacity: 0.7;">Privacy Policy & Terms</a></div>
+  </div>
 
   <script>
     function changeQty(delta) {

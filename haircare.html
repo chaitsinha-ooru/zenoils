@@ -32,8 +32,27 @@
                 <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
             </a>
             <button class="nav-cta" onclick="window.location.href='index.html#products'">Shop Now</button>
+            <button class="mobile-menu-btn"
+                style="display: none; background: none; border: none; cursor: pointer; padding: 8px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
         </div>
     </nav>
+
+    <div class="mobile-menu-overlay">
+        <button class="mobile-menu-close">&times;</button>
+        <ul class="mobile-menu-links">
+            <li><a href="skincare.html">Skin Care</a></li>
+            <li><a href="haircare.html">Hair & Wellness</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
 
     <header class="category-header">
         <h1 class="category-title">Hair & <em>Wellness</em></h1>
@@ -98,7 +117,7 @@
                 </div>
             </a>
             <div class="product-price-row">
-                <span class="product-price"><span class="currency">₹</span>200</span>
+                <span class="product-price"><span class="currency">₹</span>250</span>
                 <button class="add-to-cart-btn">Add to Cart</button>
             </div>
         </div>
@@ -152,13 +171,18 @@
             <ul class="footer-links">
                 <li><a href="index.html#about">About Us</a></li>
                 <li><a href="quiz.html">Book Consultation</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Shipping & Returns</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="faq.html#returns">Shipping & Returns</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </footer>
-    <div class="footer-bottom">&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+    <div class="footer-bottom">
+        <div>&copy; 2024 Zen Oils. All rights reserved. Made with love.</div>
+        <div style="margin-top: 8px;"><a href="privacy-terms.html"
+                style="color: inherit; text-decoration: none; font-size: 0.8rem; opacity: 0.7;">Privacy Policy &
+                Terms</a></div>
+    </div>
     <script src="cart.js"></script>
 </body>
 
