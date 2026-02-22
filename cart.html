@@ -10,159 +10,125 @@
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .cart-hero {
-            padding: 120px 60px 40px;
-            background: var(--warm-white);
-            text-align: center;
-        }
-
+        /* Updated Cart Layout */
         .cart-container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 40px 60px 80px;
         }
 
-        /* Checkout Form Styles */
+        #cart-view,
+        #checkout-view {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
         .checkout-view {
             display: none;
-            max-width: 600px;
-            margin: 0 auto;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 80px;
+            align-items: start;
         }
 
-        .form-group {
+        .checkout-form-side {
+            background: white;
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .checkout-summary-side {
+            background: var(--warm-white);
+            padding: 40px;
+            position: sticky;
+            top: 100px;
+            border: 1px solid rgba(74, 55, 40, 0.05);
+        }
+
+        .mini-item {
+            display: flex;
+            gap: 15px;
             margin-bottom: 20px;
-            text-align: left;
+            font-size: 0.9rem;
         }
 
-        .form-group label {
-            display: block;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-light);
-            margin-bottom: 8px;
+        .mini-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
         .form-group input,
         .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid rgba(74, 55, 40, 0.15);
-            background: white;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 14px;
+            border: none;
+            border-bottom: 1.5px solid rgba(74, 55, 40, 0.1);
+            padding: 12px 0;
+            border-radius: 0;
+            transition: border-color 0.3s ease;
+            background: transparent;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-bottom-color: var(--bark);
         }
 
         .checkout-header {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--clay);
+            margin-bottom: 40px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 40px;
+            gap: 8px;
             cursor: pointer;
-            color: var(--text-light);
-            font-size: 13px;
         }
 
-        .checkout-header:hover {
-            color: var(--bark);
-        }
-
-        .cart-item {
-            display: grid;
-            grid-template-columns: 120px 1fr auto auto;
-            align-items: center;
-            gap: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(74, 55, 40, 0.1);
-            margin-bottom: 30px;
-        }
-
-        .cart-item img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-        }
-
-        .cart-summary {
-            background: white;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(44, 31, 20, 0.8);
-            backdrop-filter: blur(5px);
-            align-items: center;
+        .step-indicator {
+            display: flex;
             justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--clay);
         }
 
-        .modal-content {
-            background-color: var(--warm-white);
-            padding: 50px;
-            border-radius: 2px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        .step-indicator span.active {
+            color: var(--bark);
+            font-weight: 500;
+            border-bottom: 1px solid var(--bark);
         }
 
-        .close-modal {
-            position: absolute;
-            right: 25px;
-            top: 15px;
-            font-size: 28px;
-            font-weight: 300;
-            cursor: pointer;
+        .cart-summary-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
             color: var(--bark);
         }
 
-        .btn-upi {
-            width: 100%;
-            background: var(--bark);
-            color: white;
-            padding: 16px;
-            border: none;
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-        }
+        @media (max-width: 900px) {
+            .checkout-view {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
 
-        @media (max-width: 992px) {
-            .cart-hero {
-                padding: 100px 30px 30px;
+            .checkout-summary-side {
+                position: static;
+                order: -1;
             }
 
             .cart-container {
-                padding: 30px 20px 60px;
-            }
-
-            #cart-view {
-                grid-template-columns: 1fr !important;
-                gap: 40px !important;
-            }
-
-            .cart-item {
-                grid-template-columns: 80px 1fr auto !important;
-                gap: 15px !important;
-            }
-
-            .cart-item img {
-                width: 80px;
-                height: 80px;
-            }
-
-            .checkout-view {
-                padding: 30px !important;
+                padding: 40px 20px;
             }
         }
     </style>
@@ -217,9 +183,12 @@
     </div>
 
     <header class="cart-hero">
-        <h1 class="category-title" id="page-title">Your <em>Cart</em></h1>
-        <p class="category-description" id="page-subtitle">Verify your choices before we prepare your personalized oils.
-        </p>
+        <h1 class="category-title" id="page-title">Your <em>Bag</em></h1>
+        <div class="step-indicator">
+            <span id="step-bag" class="active">01 Bag</span>
+            <span id="step-details">02 Details</span>
+            <span id="step-payment">03 Payment</span>
+        </div>
     </header>
 
     <div class="cart-container">
@@ -230,36 +199,67 @@
         </div>
 
         <!-- Step 2: Checkout View -->
-        <div id="checkout-view" class="checkout-view"
-            style="max-width: 700px; background: white; padding: 60px; box-shadow: 0 10px 40px rgba(0,0,0,0.05);">
-            <div class="checkout-header" onclick="showCart()" style="margin-bottom: 30px;"><span>&larr; Back to
-                    Cart</span></div>
-            <form id="shipping-form">
-                <h2 class="summary-title" style="text-align: center; margin-bottom: 40px; font-size: 2rem;">Shipping
-                    <em>Details</em>
-                </h2>
-                <div class="form-group"><label>Full Name</label><input type="text" id="cust-name" required></div>
-                <div class="form-group"><label>Email Address</label><input type="email" id="cust-email" required></div>
-                <div class="form-group"><label>Phone Number</label><input type="tel" id="cust-phone"
-                        placeholder="+91 9876543210" required></div>
-                <div class="form-group"><label>Address</label><textarea id="cust-address" required rows="3"></textarea>
+        <div id="checkout-view" class="checkout-view" style="display: none; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: start;"></div>
+            <div class="checkout-form-side" style="background: white; padding: 40px; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+                <div class="checkout-header" onclick="showCart()" style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--clay); margin-bottom: 40px; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Bag
                 </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div class="form-group"><label>City</label><input type="text" id="cust-city" required></div>
-                    <div class="form-group"><label>Pincode</label><input type="text" id="cust-pincode"
-                            placeholder="6-digit India Pincode" maxlength="6" required></div>
-                </div>
-                <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px; margin-top: 20px;">
-                    <input type="checkbox" id="terms-check" style="width: auto; margin-top: 4px;" required>
-                    <label for="terms-check"
-                        style="text-transform: none; font-size: 13px; letter-spacing: 0; color: var(--bark);">I agree to
-                        the <a href="#" style="color: var(--bark); text-decoration: underline;">Terms & Conditions</a>
-                        and <a href="#" style="color: var(--bark); text-decoration: underline;">Privacy
-                            Policy</a>.</label>
-                </div>
-                <button type="submit" class="btn-upi">Continue to Payment</button>
-            </form>
+                
+                <form id="shipping-form">
+                    <h2 class="cart-summary-title" style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 30px; color: var(--bark);">Shipping <em>Details</em></h2>
+                    
+                    <div class="form-group" style="margin-bottom: 25px;">
+                        <label style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--clay); margin-bottom: 8px;">Full Name</label>
+                        <input type="text" id="cust-name" placeholder="Enter your name" required style="width: 100%; border: none; border-bottom: 1.5px solid rgba(74, 55, 40, 0.1); padding: 12px 0; background: transparent; transition: border-color 0.3s ease;">
+                    </div>
+                    
+                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group" style="margin-bottom: 25px;">
+                            <label style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--clay); margin-bottom: 8px;">Email Address</label>
+                            <input type="email" id="cust-email" placeholder="email@example.com" required style="width: 100%; border: none; border-bottom: 1.5px solid rgba(74, 55, 40, 0.1); padding: 12px 0; background: transparent;">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 25px;">
+                            <label style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--clay); margin-bottom: 8px;">Phone Number</label>
+                            <input type="tel" id="cust-phone" placeholder="10-digit number" required style="width: 100%; border: none; border-bottom: 1.5px solid rgba(74, 55, 40, 0.1); padding: 12px 0; background: transparent;">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 25px;">
+                        <label style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--clay); margin-bottom: 8px;">Shipping Address</label>
+                        <textarea id="cust-address" placeholder="Flat / House No. / Street" required rows="2" style="width: 100%; border: none; border-bottom: 1.5px solid rgba(74, 55, 40, 0.1); padding: 12px 0; background: transparent; resize: none;"></textarea>
+                    </div>
+
+                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group" style="margin-bottom: 25px;">
+                            <label style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--clay); margin-bottom: 8px;">City</label>
+                            <input type="text" id="cust-city" placeholder="Your City" required style="width: 100%; border: none; border-bottom: 1.5px solid rgba(74, 55, 40, 0.1); padding: 12px 0; background: transparent;">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 25px;">
+                            <label style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--clay); margin-bottom: 8px;">Pincode</label>
+                            <input type="text" id="cust-pincode" placeholder="6-digit ZIP" maxlength="6" required style="width: 100%; border: none; border-bottom: 1.5px solid rgba(74, 55, 40, 0.1); padding: 12px 0; background: transparent;">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display: flex; align-items: flex-start; gap: 12px; margin-top: 30px;">
+                        <input type="checkbox" id="terms-check" style="width: auto; margin-top: 4px;" required>
+                        <label for="terms-check" style="text-transform: none; font-size: 12px; letter-spacing: 0; color: var(--clay);">
+                            I agree to the <a href="privacy-terms.html#terms" style="color: var(--bark); text-decoration: underline;">Terms & Conditions</a> 
+                            and <a href="privacy-terms.html#privacy" style="color: var(--bark); text-decoration: underline;">Privacy Policy</a>.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-checkout" style="margin-top: 40px; width: 100%; background: var(--bark); color: white; padding: 18px; border: none; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer;">Continue to Payment</button>
+                </form>
+            </div>
+
+            <div class="checkout-summary-side" id="checkout-mini-summary" style="background: var(--warm-white); padding: 40px; position: sticky; top: 100px; border: 1px solid rgba(74, 55, 40, 0.05);">
+                <!-- Filled dynamically by cart.js -->
+            </div>
         </div>
+鼓
     </div>
 
     <!-- UPI Modal -->
@@ -320,47 +320,129 @@
         function renderCart() {
             const list = document.getElementById('items-list');
             const summary = document.getElementById('cart-summary-section');
+            const cartView = document.getElementById('cart-view');
+
             if (cart.length === 0) {
-                document.getElementById('cart-view').innerHTML = `<div style="grid-column: span 2; text-align: center; padding: 100px 0;">
-                    <p style="margin-bottom: 30px;">Your cart is empty.</p><a href="index.html#products" class="btn-primary">Shop Now</a></div>`;
+                cartView.innerHTML = `<div style="grid-column: span 2; text-align: center; padding: 100px 0;">
+                    <p style="margin-bottom: 30px; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;">Your bag is empty.</p>
+                    <a href="index.html#products" class="nav-cta" style="text-decoration: none; display: inline-block;">Explore Collection</a>
+                </div>`;
                 return;
             }
+
             let subtotal = 0;
             list.innerHTML = cart.map((item, index) => {
                 subtotal += item.price * item.quantity;
-                return `<div class="cart-item">
-                    <img src="${item.image}">
-                    <div><h3>${item.name}</h3><p style="font-size: 13px; color: var(--text-light);">Boutique Handcrafted Oil</p></div>
-                    <div class="cart-qty" style="display:flex; gap:15px; border:1px solid #eee; padding:5px 15px;">
-                        <button onclick="changeQty(${index},-1)" style="border:0; background:0; cursor:pointer;">−</button>
-                        <span>${item.quantity}</span>
-                        <button onclick="changeQty(${index},1)" style="border:0; background:0; cursor:pointer;">+</button>
+                return `<div class="cart-item" style="display: flex; gap: 24px; padding: 24px 0; border-bottom: 1px solid rgba(74, 55, 40, 0.08);">
+                    <img src="${item.image}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 4px;">
+                    <div style="flex-grow: 1;">
+                        <h3 style="font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; margin-bottom: 4px;">${item.name}</h3>
+                        <p style="font-size: 0.85rem; color: var(--clay); margin-bottom: 16px;">Pure Botanical Blend</p>
+                        <div style="display:flex; gap:20px; align-items: center;">
+                            <div style="display:flex; align-items: center; gap:12px; border:1px solid rgba(74, 55, 40, 0.1); padding:4px 12px; border-radius: 4px;">
+                                <button onclick="changeQty(${index},-1)" style="border:0; background:0; cursor:pointer; font-size: 1.2rem;">−</button>
+                                <span style="font-size: 0.9rem; min-width: 20px; text-align: center;">${item.quantity}</span>
+                                <button onclick="changeQty(${index},1)" style="border:0; background:0; cursor:pointer; font-size: 1.2rem;">+</button>
+                            </div>
+                            <button onclick="changeQty(${index},-${item.quantity})" style="border:0; background:0; cursor:pointer; font-size: 0.7rem; color: var(--clay); text-transform: uppercase; letter-spacing: 0.05em;">Remove</button>
+                        </div>
                     </div>
-                    <div>₹${(item.price * item.quantity).toLocaleString()}</div>
+                    <div style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 1.1rem; color: var(--bark);">₹${(item.price * item.quantity).toLocaleString()}</div>
                 </div>`;
             }).join('');
+            鼓
             currentAmount = subtotal;
-            summary.innerHTML = `<div class="cart-summary">
-                <h2 class="summary-title">Summary</h2>
-                <div style="display:flex; justify-content:space-between; margin-bottom:15px;"><span>Subtotal</span><span>₹${subtotal.toLocaleString()}</span></div>
-                <div style="display:flex; justify-content:space-between; margin-top:20px; border-top:1px solid #eee; padding-top:20px; font-size:20px; font-weight:500;"><span>Total</span><span>₹${subtotal.toLocaleString()}</span></div>
-                <button class="btn-upi" onclick="showCheckout()" style="margin-top:30px;">Proceed to Checkout</button>
+            summary.innerHTML = `<div class="cart-summary" style="position: sticky; top: 100px;">
+                <h2 class="cart-summary-title">Summary</h2>
+                <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-size: 0.9rem; color: var(--clay);">
+                    <span>Subtotal</span>
+                    <span>₹${subtotal.toLocaleString()}</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-size: 0.9rem; color: var(--clay);">
+                    <span>Shipping</span>
+                    <span>Calculated at next step</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-top:30px; border-top:1px solid rgba(74, 55, 40, 0.1); padding-top:25px; font-size:1.2rem; font-weight:500; color: var(--bark);">
+                    <span>Total</span>
+                    <span>₹${subtotal.toLocaleString()}</span>
+                </div>
+                <button class="btn-checkout" onclick="showCheckout()" style="margin-top:40px;">Check Out</button>
             </div>`;
         }
 
-        function showCheckout() {
-            document.getElementById('cart-view').style.display = 'none';
-            document.getElementById('checkout-view').style.display = 'block';
-            document.getElementById('page-title').innerHTML = 'Shipping <em>Details</em>';
-            window.scrollTo(0, 0);
-        }
-        function showCart() {
-            document.getElementById('cart-view').style.display = 'grid';
-            document.getElementById('checkout-view').style.display = 'none';
-            document.getElementById('page-title').innerHTML = 'Your <em>Cart</em>';
-            window.scrollTo(0, 0);
+        function renderCheckoutSummary() {
+            const summarySide = document.getElementById('checkout-mini-summary');
+            let subtotal = 0;
+
+            const itemsHtml = cart.map(item => {
+                subtotal += item.price * item.quantity;
+                return `<div class="mini-item">
+                    <img src="${item.image}">
+                    <div style="flex-grow: 1;">
+                        <div class="cart-item-title" style="font-size: 0.9rem;">${item.name}</div>
+                        <div style="font-size: 0.8rem; color: var(--clay);">Qty: ${item.quantity}</div>
+                    </div>
+                    <div style="font-weight: 500;">₹${(item.price * item.quantity).toLocaleString()}</div>
+                </div>`;
+            }).join('');
+
+            summarySide.innerHTML = `
+                <h3 class="cart-summary-title" style="font-size: 1.4rem;">Order <em>Summary</em></h3>
+                <div style="margin-bottom: 30px;">${itemsHtml}</div>
+                <div style="border-top: 1px solid rgba(74, 55, 40, 0.1); padding-top: 20px;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-size: 0.9rem;">
+                        <span style="color: var(--clay);">Subtotal</span>
+                        <span>₹${subtotal.toLocaleString()}</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-size: 0.9rem;">
+                        <span style="color: var(--clay);">Shipping</span>
+                        <span style="color: var(--clay);">Complimentary</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-top:20px; font-size: 1.2rem; font-weight: 500; color: var(--bark);">
+                        <span>Total Due</span>
+                        <span>₹${subtotal.toLocaleString()}</span>
+                    </div>
+                </div>
+                <div style="margin-top: 40px; padding: 20px; background: rgba(74, 55, 40, 0.03); border-radius: 4px; font-size: 0.8rem; line-height: 1.6; color: var(--clay);">
+                    <p>✦ <strong>Zen Delivery:</strong> Your orders are freshly blended and shipped within 2 days. Expect delivery in 5-7 business days.</p>
+                </div>
+            `;
         }
 
+        function showCheckout() {
+            const cv = document.getElementById('cart-view');
+            const ch = document.getElementById('checkout-view');
+
+            cv.style.opacity = '0';
+            setTimeout(() => {
+                cv.style.display = 'none';
+                ch.style.display = 'grid';
+                renderCheckoutSummary();
+                setTimeout(() => { ch.style.opacity = '1'; }, 50);
+            }, 400);
+
+            document.getElementById('step-bag').classList.remove('active');
+            document.getElementById('step-details').classList.add('active');
+            document.getElementById('page-title').innerHTML = 'Shipping <em>Details</em>';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showCart() {
+            const cv = document.getElementById('cart-view');
+            const ch = document.getElementById('checkout-view');
+
+            ch.style.opacity = '0';
+            setTimeout(() => {
+                ch.style.display = 'none';
+                cv.style.display = 'grid';
+                setTimeout(() => { cv.style.opacity = '1'; }, 50);
+            }, 400);
+
+            document.getElementById('step-details').classList.remove('active');
+            document.getElementById('step-bag').classList.add('active');
+            document.getElementById('page-title').innerHTML = 'Your <em>Bag</em>';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
         document.getElementById('shipping-form').addEventListener('submit', async (e) => {
             e.preventDefault();
 
